@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
@@ -10,7 +11,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { LoginForm } from "./login-form";
 
@@ -31,7 +31,7 @@ const Header = () => {
       <div className="flex justify-between items-center py-4 border-b border-gray-200">
         <div className="text-2xl font-bold tracking-wider">
           <Link href="/">
-            <img src="/logo.svg" alt="Sanshine Logo" className="h-12" />
+            <Image src="/logo.svg" alt="Sanshine Logo" width={150} height={48} className="h-12" />
           </Link>
         </div>
         <div className="flex items-center space-x-6">
