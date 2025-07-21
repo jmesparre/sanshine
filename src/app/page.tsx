@@ -233,6 +233,7 @@ export default function Home() {
             {/* Product 4 */}
             <div className="bg-gray-50 p-8 rounded-3xl">
               <Image src="/placeholder-producto.jpg" alt="Producto" width={400} height={400} className="rounded-2xl mb-6" style={{ height: 'auto' }} />
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
               <h4 className="font-bold mb-2">Proteína Vegana "Vitalidad"</h4>
               <p className="text-sm text-gray-600">Proteína en polvo de alta calidad a base de plantas, enriquecida con superalimentos para apoyar la masa muscular, la recuperación y un estilo de vida activo.</p>
             </div>
