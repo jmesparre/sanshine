@@ -31,7 +31,7 @@ const Header = () => {
       <div className="flex justify-between items-center py-4 border-b border-gray-200">
         <div className="text-2xl font-bold tracking-wider">
           <Link href="/">
-            <img src="/logo.svg" alt="Sanshine Logo" className="h-8" />
+            <img src="/logo.svg" alt="Sanshine Logo" className="h-12" />
           </Link>
         </div>
         <div className="flex items-center space-x-6">
