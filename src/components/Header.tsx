@@ -30,7 +30,9 @@ const Header = () => {
       {/* Top Bar */}
       <div className="flex justify-between items-center py-4 border-b border-gray-200">
         <div className="text-2xl font-bold tracking-wider">
-          <Link href="/">SANSHINE</Link>
+          <Link href="/">
+            <img src="/logo.svg" alt="Sanshine Logo" className="h-8" />
+          </Link>
         </div>
         <div className="flex items-center space-x-6">
           <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900">
