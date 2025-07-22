@@ -33,7 +33,10 @@ const Header = () => {
       <div className="flex justify-between items-center py-4 border-b border-gray-200">
         <div className="text-2xl font-bold tracking-wider">
           <Link href="/">
-            <Image src="/logo.svg" alt="Sanshine Logo" width={150} height={48} className="h-12" />
+            <>
+              <Image src="/logo.svg" alt="Sanshine Logo" width={150} height={48} className="h-12 block dark:hidden" />
+              <Image src="/logo-blanco.svg" alt="Sanshine Logo" width={150} height={48} className="h-12 hidden dark:block" />
+            </>
           </Link>
         </div>
         <div className="hidden md:flex items-center space-x-6">
