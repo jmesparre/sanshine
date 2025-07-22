@@ -8,14 +8,14 @@ import Button from "@/components/Button";
 export default function Home() {
   return (
     <main className="bg-white text-gray-800">
-      <div className="px-12 py-20">
+      <div className="px-9 py-0">
 
         {/* Hero Section */}
         <section className="grid md:grid-cols-2 gap-16 items-center mb-32">
           {/* Left Column */}
           <div>
-            <p className="text-sm mb-4 pt-2">Lic. Fernanda Sarro</p>
-            <h1 className="text-6xl font-bold leading-tight mb-6">
+            <p className="text-lg mb-3 mt-14 sm:mt-[-2]">Lic. Fernanda Sarro</p>
+            <h1 className="text-6xl font-semibold mb-6">
               Especialista en Nutrición Depurativa y Regenerativa
             </h1>
             <ul className="space-y-3 text-lg">
@@ -31,7 +31,7 @@ export default function Home() {
               alt="Fernanda Sarro"
               width={600}
               height={600}
-              className="rounded-3xl object-cover"
+              className="rounded-3xl object-cover "
               priority
             />
           </div>
@@ -71,10 +71,6 @@ export default function Home() {
               <div className="flex items-baseline">
                 <span className="text-4xl font-bold text-orange-500 mr-6">03</span>
                 <h3 className="text-4xl font-bold">Detox Virtual</h3>
-              </div>
-              <div className="flex items-baseline">
-                <span className="text-4xl font-bold text-orange-500 mr-6">04</span>
-                <h3 className="text-4xl font-bold">Productos</h3>
               </div>
             </div>
           </div>
@@ -205,40 +201,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Productos Section */}
-        <section className="mb-32">
-          <div className="flex items-baseline mb-12">
-            <span className="text-4xl font-bold text-orange-500 mr-6">06</span>
-            <h3 className="text-4xl font-bold">Productos</h3>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Product 1 */}
-            <div className="bg-gray-50 p-8 rounded-3xl">
-              <Image src="/placeholder-producto.jpg" alt="Producto" width={400} height={400} className="rounded-2xl mb-6" style={{ height: 'auto' }} />
-              <h4 className="font-bold mb-2">Kit Detox Intestinal</h4>
-              <p className="text-sm text-gray-600">Una selección de suplementos y hierbas naturales diseñados para limpiar y restaurar tu sistema digestivo, mejorando la absorción de nutrientes y tu bienestar general.</p>
-            </div>
-            {/* Product 2 */}
-            <div className="bg-gray-50 p-8 rounded-3xl">
-              <Image src="/placeholder-producto.jpg" alt="Producto" width={400} height={400} className="rounded-2xl mb-6" style={{ height: 'auto' }} />
-              <h4 className="font-bold mb-2">Tónico Regenerativo Celular</h4>
-              <p className="text-sm text-gray-600">Fórmula avanzada con antioxidantes y adaptógenos para combatir el estrés oxidativo y promover la regeneración celular, dándote una piel radiante y más energía.</p>
-            </div>
-            {/* Product 3 */}
-            <div className="bg-gray-50 p-8 rounded-3xl">
-              <Image src="/placeholder-producto.jpg" alt="Producto" width={400} height={400} className="rounded-2xl mb-6" style={{ height: 'auto' }} />
-              <h4 className="font-bold mb-2">Infusión Equilibrio Hormonal</h4>
-              <p className="text-sm text-gray-600">Mezcla de hierbas orgánicas que ayudan a regular el sistema endocrino, aliviando síntomas de desequilibrio hormonal y promoviendo un ciclo menstrual saludable.</p>
-            </div>
-            {/* Product 4 */}
-            <div className="bg-gray-50 p-8 rounded-3xl">
-              <Image src="/placeholder-producto.jpg" alt="Producto" width={400} height={400} className="rounded-2xl mb-6" style={{ height: 'auto' }} />
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <h4 className="font-bold mb-2">Proteína Vegana "Vitalidad"</h4>
-              <p className="text-sm text-gray-600">Proteína en polvo de alta calidad a base de plantas, enriquecida con superalimentos para apoyar la masa muscular, la recuperación y un estilo de vida activo.</p>
-            </div>
-          </div>
-        </section>
+   
 
       </div>
     </main>
