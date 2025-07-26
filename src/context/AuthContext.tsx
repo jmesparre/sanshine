@@ -1,37 +1,54 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import type { User } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+  signOut,
+  User,
+} from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  signInWithGoogle: () => void;
-  logOut: () => void;
+  signInWithGoogle: () => Promise<void>;
+  logOut: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+const provider = new GoogleAuthProvider();
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const signInWithGoogle = () => {
-    // Mock user for UI development
-    setUser({
-      displayName: "Usuario de Prueba",
-      email: "test@example.com",
-      uid: "123",
-    } as User);
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error during sign in with Google:", error);
+    }
   };
 
-  const logOut = () => {
-    setUser(null);
+  const logOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error during sign out:", error);
+    }
   };
 
   useEffect(() => {
-    // No real auth for now, just stop loading
-    setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, []);
 
   return (
