@@ -14,8 +14,11 @@ import { auth } from "@/lib/firebase";
 interface AuthContextType {
   user: User | null;
   loading: boolean;
+  isLoginModalOpen: boolean;
   signInWithGoogle: () => Promise<void>;
   logOut: () => Promise<void>;
+  promptLogin: () => void;
+  closeLoginModal: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -25,10 +28,18 @@ const provider = new GoogleAuthProvider();
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const promptLogin = () => {
+    console.log("promptLogin called");
+    setIsLoginModalOpen(true);
+  };
+  const closeLoginModal = () => setIsLoginModalOpen(false);
 
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, provider);
+      closeLoginModal();
     } catch (error) {
       console.error("Error during sign in with Google:", error);
     }
@@ -52,7 +63,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, signInWithGoogle, logOut }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        isLoginModalOpen,
+        signInWithGoogle,
+        logOut,
+        promptLogin,
+        closeLoginModal,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

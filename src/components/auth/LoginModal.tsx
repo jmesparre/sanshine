@@ -7,16 +7,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { LoginForm } from "@/components/login-form";
+import { useAuth } from "@/context/AuthContext";
+import { Button } from "@/components/ui/button";
 
-interface LoginModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+export const LoginModal = () => {
+  const { isLoginModalOpen, closeLoginModal, signInWithGoogle } = useAuth();
 
-export function LoginModal({ isOpen, onClose }: LoginModalProps) {
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isLoginModalOpen} onOpenChange={closeLoginModal}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Login</DialogTitle>
@@ -24,8 +22,12 @@ export function LoginModal({ isOpen, onClose }: LoginModalProps) {
             Inicia sesión para continuar.
           </DialogDescription>
         </DialogHeader>
-        <LoginForm />
+        <div className="flex flex-col gap-6">
+          <Button variant="outline" className="w-full" onClick={signInWithGoogle}>
+            Login with Google
+          </Button>
+        </div>
       </DialogContent>
     </Dialog>
   );
-}
+};

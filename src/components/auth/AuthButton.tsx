@@ -1,0 +1,31 @@
+"use client";
+
+import { useAuth } from "@/context/AuthContext";
+import { Button } from "@/components/ui/button";
+
+const AuthButton = () => {
+  const { user, loading, signInWithGoogle, logOut, promptLogin } = useAuth();
+
+  if (loading) {
+    return <Button variant="outline" disabled>Cargando...</Button>;
+  }
+
+  if (user) {
+    return (
+      <div className="flex items-center space-x-4">
+        <span className="text-sm capitalize">{user.displayName}</span>
+        <button onClick={logOut} className="text-sm text-gray-600 hover:text-gray-900">
+          Log out
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <Button variant="outline" onClick={() => alert("Button clicked!")}>
+      Iniciar Sesión
+    </Button>
+  );
+};
+
+export default AuthButton;

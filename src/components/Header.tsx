@@ -5,15 +5,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "./ui/button";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { LoginForm } from "./login-form";
+import dynamic from "next/dynamic";
+import AuthButton from "./auth/AuthButton";
+
+const MobileMenu = dynamic(() => import("./layout/MobileMenu"), { ssr: false });
 
 const NavLink = ({ href, number, children }: { href: string; number: string; children: React.ReactNode }) => (
   <Link href={href} className="text-gray-600 hover:text-gray-900 transition-colors duration-300 flex items-center space-x-2">
@@ -23,8 +18,7 @@ const NavLink = ({ href, number, children }: { href: string; number: string; chi
 );
 
 const Header = () => {
-  const { user, loading, logOut } = useAuth();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user, loading } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -44,32 +38,7 @@ const Header = () => {
             Contactame
           </Link>
           <div className="h-6 border-l border-gray-300"></div>
-          {!loading &&
-            (user ? (
-              <div className="flex items-center space-x-4">
-                <span className="text-sm">{user.displayName}</span>
-                <button onClick={logOut} className="text-sm text-gray-600 hover:text-gray-900">
-                  Log out
-                </button>
-              </div>
-            ) : (
-              <>
-                <Button variant="outline" onClick={() => setIsModalOpen(true)}>
-                  Iniciar Sesión
-                </Button>
-                <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-                  <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                      <DialogTitle>Login</DialogTitle>
-                      <DialogDescription>
-                        Inicia sesión para continuar.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <LoginForm />
-                  </DialogContent>
-                </Dialog>
-              </>
-            ))}
+          <AuthButton />
         </div>
         <div className="md:hidden flex items-center">
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-gray-600 hover:text-gray-900">
@@ -90,46 +59,7 @@ const Header = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden"
-          >
-            <nav className="flex flex-col space-y-4 py-4">
-              <NavLink href="/consultas" number="01">Consultas</NavLink>
-              <NavLink href="/workshops" number="02">Workshops</NavLink>
-              <NavLink href="/programas-detox" number="03">Programas Detox</NavLink>
-              <NavLink href="/productos" number="04">Productos</NavLink>
-              <NavLink href="/mentorias" number="05">Mentorias</NavLink>
-              <NavLink href="/limpieza-epatica" number="06">Limpieza Epática</NavLink>
-              <div className="border-t border-gray-200 pt-4">
-                <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900">
-                  Contactame
-                </Link>
-                {!loading &&
-                  (user ? (
-                    <div className="flex flex-col space-y-2 mt-4">
-                      <span className="text-sm">{user.displayName}</span>
-                      <button onClick={logOut} className="text-sm text-gray-600 hover:text-gray-900 text-left">
-                        Log out
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="mt-4">
-                      <Button variant="outline" onClick={() => { setIsModalOpen(true); setIsMobileMenuOpen(false); }}>
-                        Iniciar Sesión
-                      </Button>
-                    </div>
-                  ))}
-              </div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileMenu isOpen={isMobileMenuOpen} />
     </header>
   );
 };

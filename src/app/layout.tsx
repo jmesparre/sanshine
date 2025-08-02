@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Rethink_Sans } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { AuthProvider } from "@/context/AuthContext";
+import ClientLayout from "@/components/layout/ClientLayout";
 import "./globals.css";
 
 const rethinkSans = Rethink_Sans({
@@ -23,11 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${rethinkSans.variable} antialiased flex flex-col min-h-screen`}>
-        <AuthProvider>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </AuthProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
