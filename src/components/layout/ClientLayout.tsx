@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 import { LoginModal } from "@/components/auth/LoginModal";
 
 export default function ClientLayout({
@@ -17,12 +18,18 @@ export default function ClientLayout({
         setIsClient(true);
     }, []);
 
+    if (!isClient) {
+        return null; // O un spinner de carga
+    }
+
     return (
         <AuthProvider>
-            {isClient && <Header />}
-            <main className="flex-grow">{children}</main>
-            {isClient && <Footer />}
-            <LoginModal />
+            <CurrencyProvider>
+                <Header />
+                <main className="flex-grow">{children}</main>
+                <Footer />
+                <LoginModal />
+            </CurrencyProvider>
         </AuthProvider>
     );
 }

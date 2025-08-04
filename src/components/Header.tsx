@@ -51,11 +51,9 @@ const Header = () => {
 
       {/* Sub Navigation */}
       <nav className="hidden md:flex justify-between items-center py-4">
-        <NavLink href="/consultas" number="01">Consultas</NavLink>
-        <NavLink href="/workshops" number="02">Workshops</NavLink>
-        <NavLink href="/programas-detox" number="03">Programas Detox</NavLink>
-        <NavLink href="/mentorias" number="04">Mentorias</NavLink>
-        <NavLink href="/limpieza-epatica" number="05">Limpieza Epática</NavLink>
+        <NavLink href="/consultas" number="01">Workshop Gastrointestinal</NavLink>
+        <NavLink href="/workshops" number="02">Detox Grupal</NavLink>
+        <NavLink href="/programas-detox" number="03">Detox Individual</NavLink>
       </nav>
 
       {/* Mobile Menu */}
