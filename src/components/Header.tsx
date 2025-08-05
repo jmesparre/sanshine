@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useAuth } from "@/context/AuthContext";
 import dynamic from "next/dynamic";
 import AuthButton from "./auth/AuthButton";
 
