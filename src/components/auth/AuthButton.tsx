@@ -4,7 +4,7 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 
 const AuthButton = () => {
-  const { user, loading, signInWithGoogle, logOut, promptLogin } = useAuth();
+  const { user, loading, logOut, promptLogin } = useAuth();
 
   if (loading) {
     return <Button variant="outline" disabled>Cargando...</Button>;

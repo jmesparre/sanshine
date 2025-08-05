@@ -1,6 +1,6 @@
 "use client";
 
-import { Service, Currency } from "@/types";
+import { Service } from "@/types";
 import { useCurrency } from "@/context/CurrencyContext";
 import CurrencySelector from "./CurrencySelector";
 import PaymentButton from "./PaymentButton";
