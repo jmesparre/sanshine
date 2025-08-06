@@ -22,7 +22,7 @@ const AuthButton = () => {
   }
 
   return (
-    <Button variant="outline" onClick={promptLogin}>
+    <Button variant="outline" onClick={() => promptLogin()}>
       Iniciar Sesión
     </Button>
   );
