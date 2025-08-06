@@ -16,7 +16,7 @@ interface AuthContextType {
   isLoginModalOpen: boolean;
   signInWithGoogle: () => Promise<void>;
   logOut: () => Promise<void>;
-  promptLogin: () => void;
+  promptLogin: (onSuccess?: () => void) => void;
   closeLoginModal: () => void;
 }
 
@@ -28,17 +28,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [postLoginAction, setPostLoginAction] = useState<(() => void) | null>(
+    null
+  );
 
-  const promptLogin = () => {
+  const promptLogin = (onSuccess?: () => void) => {
     console.log("promptLogin called");
+    if (onSuccess) {
+      setPostLoginAction(() => onSuccess);
+    }
     setIsLoginModalOpen(true);
   };
   const closeLoginModal = () => setIsLoginModalOpen(false);
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, provider);
-      closeLoginModal();
+      const result = await signInWithPopup(auth, provider);
+      if (result.user) {
+        closeLoginModal();
+        if (postLoginAction) {
+          postLoginAction();
+          setPostLoginAction(null);
+        }
+      }
     } catch (error) {
       console.error("Error during sign in with Google:", error);
     }

@@ -26,42 +26,46 @@ export default function PaymentButton({
   const { user, promptLogin } = auth;
 
   const handlePayment = async () => {
+    const paymentAction = async () => {
+      if (method.name === "Mercado Pago") {
+        setIsLoading(true);
+        try {
+          const response = await fetch("/api/create-payment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: service.id,
+              title: service.title,
+              unit_price: price.amount,
+              currency_id: price.currency,
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to create payment preference");
+          }
+
+          const data = await response.json();
+          window.location.href = data.init_point;
+        } catch (error) {
+          console.error(error);
+          alert("Error al procesar el pago. Por favor, intenta de nuevo.");
+          setIsLoading(false);
+        }
+      } else {
+        // Handle other payment methods
+        console.log("Proceeding to payment with:", method.name);
+      }
+    };
+
     if (!user) {
-      promptLogin();
+      promptLogin(paymentAction);
       return;
     }
 
-    if (method.name === "Mercado Pago") {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/api/create-payment", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: service.id,
-            title: service.title,
-            unit_price: price.amount,
-            currency_id: price.currency,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to create payment preference");
-        }
-
-        const data = await response.json();
-        window.location.href = data.init_point;
-      } catch (error) {
-        console.error(error);
-        alert("Error al procesar el pago. Por favor, intenta de nuevo.");
-        setIsLoading(false);
-      }
-    } else {
-      // Handle other payment methods
-      console.log("Proceeding to payment with:", method.name);
-    }
+    paymentAction();
   };
 
   return (
