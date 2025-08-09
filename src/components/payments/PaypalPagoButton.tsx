@@ -1,6 +1,7 @@
 "use client";
 
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import type { OnApproveData, CreateOrderData, OnApproveActions, CreateOrderActions } from "@paypal/paypal-js";
 import { useRouter } from 'next/navigation';
 
 interface PaypalPagoButtonProps {
@@ -17,7 +18,7 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
     intent: "capture",
   };
 
-  const createOrder = (data: any, actions: any) => {
+  const createOrder = (data: CreateOrderData, actions: CreateOrderActions) => {
     return fetch("/api/create-paypal-order", {
       method: "POST",
       headers: {
@@ -37,19 +38,22 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
       .then((order) => order.id);
   };
 
-  const onApprove = (data: any, actions: any) => {
+  const onApprove = (data: OnApproveData, actions: OnApproveActions) => {
     // This function is called when the user approves the payment.
     // Here you would typically capture the order details and save them to your database.
     console.log("Payment approved:", data);
     
     // For now, we'll just redirect to the success page.
     // In a real implementation, you would first verify the payment on your server.
-    router.push('/pago-exitoso');
-    
+    if (actions.order) {
+        return actions.order.capture().then(() => {
+            router.push('/pago-exitoso');
+        });
+    }
     return Promise.resolve();
   };
 
-  const onError = (err: any) => {
+  const onError = (err: Record<string, unknown>) => {
     console.error("PayPal Error:", err);
     router.push('/pago-fallido');
   };

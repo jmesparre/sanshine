@@ -8,13 +8,6 @@ import AuthButton from "./auth/AuthButton";
 
 const MobileMenu = dynamic(() => import("./layout/MobileMenu"), { ssr: false });
 
-const NavLink = ({ href, number, children }: { href: string; number: string; children: React.ReactNode }) => (
-  <Link href={href} className="text-gray-600 hover:text-gray-900 transition-colors duration-300 flex items-center space-x-2">
-    <span>{children}</span>
-    <span className="text-xs text-gray-400">{number}</span>
-  </Link>
-);
-
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
