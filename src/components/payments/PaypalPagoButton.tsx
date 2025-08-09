@@ -13,12 +13,12 @@ interface PaypalPagoButtonProps {
 const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, serviceName }) => {
   const router = useRouter();
   const paypalOptions = {
-    "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "test",
+    clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "test",
     currency: currency,
     intent: "capture",
   };
 
-  const createOrder = (data: CreateOrderData, actions: CreateOrderActions) => {
+  const createOrder = (_data: CreateOrderData, _actions: CreateOrderActions) => {
     return fetch("/api/create-paypal-order", {
       method: "POST",
       headers: {
