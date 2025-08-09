@@ -48,7 +48,7 @@ export const services: Service[] = [
         amount: 200,
         paymentMethods: [
           {
-            name: 'Transferencia Bancaria',
+            name: 'PayPal',
             icon: '/usa-flag.png',
           },
         ],
@@ -58,7 +58,7 @@ export const services: Service[] = [
         amount: 130,
         paymentMethods: [
           {
-            name: 'Transferencia Bancaria',
+            name: 'PayPal',
             icon: '/euro-flag.png',
           },
         ],
@@ -104,7 +104,7 @@ export const services: Service[] = [
         amount: 240,
         paymentMethods: [
           {
-            name: 'Transferencia Bancaria',
+            name: 'PayPal',
             icon: '/euro-flag.png',
           },
         ],
@@ -124,7 +124,7 @@ export const services: Service[] = [
         amount: 240,
         paymentMethods: [
           {
-            name: 'Transferencia Bancaria',
+            name: 'PayPal',
             icon: '/usa-flag.png',
           },
         ],
@@ -160,7 +160,7 @@ export const services: Service[] = [
         amount: 180,
         paymentMethods: [
           {
-            name: 'Transferencia Bancaria',
+            name: 'PayPal',
             icon: '/usa-flag.png',
           },
         ],
@@ -170,7 +170,7 @@ export const services: Service[] = [
         amount: 130,
         paymentMethods: [
           {
-            name: 'Transferencia Bancaria',
+            name: 'PayPal',
             icon: '/euro-flag.png',
           },
         ],

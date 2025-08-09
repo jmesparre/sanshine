@@ -5,6 +5,7 @@ import { Service } from "@/types";
 import { useCurrency } from "@/context/CurrencyContext";
 import CurrencySelector from "./CurrencySelector";
 import PaymentButton from "./PaymentButton";
+import PaypalPagoButton from "./PaypalPagoButton";
 import Modal from "@/components/Modal";
 
 interface PaymentSectionProps {
@@ -50,17 +51,25 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
       </div>
 
       <hr className="border-black" />
-       
+
       <div>
         <p className="text-sm text-gray-500 mb-2">forma de pago:</p>
-        {selectedPrice?.paymentMethods.map((method) => (
-          <PaymentButton
-            key={method.name}
-            price={selectedPrice}
-            method={method}
-            service={service}
+        {selectedCurrency === "USD" || selectedCurrency === "EUR" ? (
+          <PaypalPagoButton
+            amount={selectedPrice?.amount.toString() || "0"}
+            currency={selectedCurrency}
+            serviceName={service.title}
           />
-        ))}
+        ) : (
+          selectedPrice?.paymentMethods.map((method) => (
+            <PaymentButton
+              key={method.name}
+              price={selectedPrice}
+              method={method}
+              service={service}
+            />
+          ))
+        )}
       </div>
 
       {service.targetAudience && service.faq && (

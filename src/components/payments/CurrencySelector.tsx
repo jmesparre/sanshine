@@ -59,7 +59,7 @@ export default function CurrencySelector({
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute z-10 w-full mt-1 bg-accent rounded-lg shadow-lg">
+        <div className="absolute z-999 w-full mt-1 bg-accent rounded-lg shadow-lg">
           {currencies
             .filter((c) => c.code !== selectedCurrency)
             .map((currency) => (
