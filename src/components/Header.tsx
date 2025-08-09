@@ -34,7 +34,7 @@ const Header = () => {
           <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900">
             Contactame
           </Link>
-          <div className="h-6 border-l border-gray-300"></div>
+          <div className="h-6 border-l border-black"></div>
           <AuthButton />
         </div>
         <div className="md:hidden flex items-center">

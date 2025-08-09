@@ -10,40 +10,40 @@ export default function Home() {
     <main className="">
       <div className="px-9 py-0">
         {/* Hero Section */}
-        <section className="grid md:grid-cols-2 gap-16 items-center mb-32">
+        <section className="grid pt-5 px-4 md:grid-cols-2 gap-1 items-center mb-32">
           {/* Left Column */}
           <div>
-            <p className="text-lg mb-3 mt-14 sm:mt-[-2]">Lic. Fernanda Sarro</p>
+            <p className="text-lg mb-3 ">Lic. Fernanda Sarro</p>
             <h1 className="text-6xl font-semibold font-alegreya mb-6">
               Especialista en Nutrición Depurativa y Regenerativa
             </h1>
-            <ul className="space-y-3 text-lg">
-              <li>• Accede a mis consultas</li>
-              <li>• Inscribite a mis workshops</li>
-              <li>• Conoce mi catalogo de productos</li>
+            <ul className="space-y-3 text-md italic">
+              <li>+ Taller de Inteligencia Gastro Intestinal</li>
+              <li>+ Detox Solar Grupal</li>
+              <li>+ Detox Solar Indiviudal</li>
             </ul>
           </div>
           {/* Right Column */}
           <div className="relative ">
             <Image
-              src="/placeholder-fernanda.jpg" // Placeholder
+              src="/placeholder-fernanda.png" // Placeholder
               alt="Fernanda Sarro"
               width={600}
               height={600}
-              className="rounded-3xl object-cover pt-12"
+              className="rounded-3xl object-cover pt-4"
               priority
             />
           </div>
         </section>
 
         {/* Enfoque Orgánico Section */}
-        <section className="grid md:grid-cols-3 gap-16 items-start mb-32">
+        <section className="grid px-4 md:grid-cols-7 gap-16 items-start mb-32">
           {/* Left Column */}
-          <div className="md:col-span-1">
+          <div className="md:col-span-2">
             <h2 className="text-5xl font-semibold font-alegreya">Nutrición Funcional y Depurativa:</h2>
           </div>
           {/* Right Column */}
-          <div className="md:col-span-2 w-full">
+          <div className="md:col-span-5 w-full">
             <p className="text-lg leading-relaxed">
              <b>¿Por qué cuidar tu intestino y microbiota intestinal?</b> 
              <br />
@@ -54,13 +54,13 @@ export default function Home() {
               <br />
               <b>Sanar tu microbiota es regresar a tu eje.</b> 
               <i> Desintoxicar tu cuerpo es hacer espacio para tu
-              bienestar. Y hacerlo con método, guía y acompañamiento… lo cambia todo.</i>
+              bienestar. Y hacerlo con método, guía y acompañamiento… </i>lo cambia todo.
             </p>
           </div>
         </section>
  
         
-        <hr className="pb-20 border-black"/>
+        <hr className="pb-15 border-black"/>
 
         {/* Services Sections */}
         {services.map((service, index) => (
@@ -68,9 +68,9 @@ export default function Home() {
             key={service.id}
             
           >
-            <div className="grid md:grid-cols-2 gap-16 items-start mb-52">
+            <div className="px-4 grid md:grid-cols-2 gap-1 items-start mb-52">
             {/* Left Column */}
-            <div className="space-y-8 pl-5">
+            <div className="space-y-8 pr-20">
                 <span className="text-[3.3rem] text-[#a8a427] font-alegreya ">
                   {`0${index + 1}`}/
                 </span>
@@ -101,7 +101,7 @@ export default function Home() {
               <PaymentSection service={service} />
             </div>
             {/* Right Column */}
-            <div className="space-y-8 pt-3">
+            <div className="space-y-8 pt-5">
               <div className="relative">
                 <Image
                   src={service.image}
