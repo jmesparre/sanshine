@@ -11,6 +11,11 @@ export interface Price {
   paymentMethods: PaymentMethod[];
 }
 
+export interface AccordionItem {
+  title: string;
+  content: string;
+}
+
 export interface Service {
   id: string;
   title: string;
@@ -18,4 +23,7 @@ export interface Service {
   prices: Price[];
   image: string;
   description: string;
+  faq?: string;
+  targetAudience?: string;
+  accordionItems?: AccordionItem[];
 }

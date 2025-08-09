@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Rethink_Sans } from "next/font/google";
+import { Rubik, Alegreya } from "next/font/google";
 import ClientLayout from "@/components/layout/ClientLayout";
 import "./globals.css";
 
-const rethinkSans = Rethink_Sans({
+const rubik = Rubik({
   subsets: ["latin"],
-  variable: "--font-rethink-sans",
+  variable: "--font-rubik",
+});
+
+const alegreya = Alegreya({
+  subsets: ["latin"],
+  variable: "--font-alegreya",
+
+
 });
 
 export const metadata: Metadata = {
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${rethinkSans.variable} antialiased flex flex-col min-h-screen`}>
+      <body className={`${rubik.variable} ${alegreya.variable} antialiased flex flex-col min-h-screen`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

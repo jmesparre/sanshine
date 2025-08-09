@@ -29,7 +29,7 @@ export default function CurrencySelector({
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full px-4 py-2 bg-gray-100 rounded-lg"
+        className="flex items-center justify-between w-full px-4 py-2 bg-accent rounded-lg"
       >
         <div className="flex items-center">
           <Image
@@ -59,14 +59,14 @@ export default function CurrencySelector({
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute z-10 w-full mt-1 bg-white rounded-lg shadow-lg">
+        <div className="absolute z-10 w-full mt-1 bg-accent rounded-lg shadow-lg">
           {currencies
             .filter((c) => c.code !== selectedCurrency)
             .map((currency) => (
               <button
                 key={currency.code}
               onClick={() => handleSelect(currency.code as Currency)}
-              className="flex items-center w-full px-4 py-2 text-left hover:bg-gray-100"
+              className="flex items-center w-full px-4 py-2 text-left hover:bg-background"
             >
               <Image
                 src={currency.flag}

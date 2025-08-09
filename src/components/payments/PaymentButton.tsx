@@ -72,7 +72,7 @@ export default function PaymentButton({
     <button
       onClick={handlePayment}
       disabled={isLoading}
-      className="w-full bg-green-700 text-white rounded-lg p-4 flex items-center justify-between hover:bg-green-800 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
+      className="w-full bg-secondary text-white rounded-lg p-4 flex items-center justify-between hover:bg-secondary-foreground transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
     >
       <div className="flex items-center">
         <Image
@@ -89,10 +89,10 @@ export default function PaymentButton({
       </div>
       <div className="text-right">
         {isLoading ? (
-          <p className="text-xl font-bold">Procesando...</p>
+          <p className="text-xl ">Procesando...</p>
         ) : (
           <>
-            <p className="text-xl font-bold">
+            <p className="text-xl ">
               {price.amount.toLocaleString("es-AR", {
                 style: "currency",
                 currency: price.currency,

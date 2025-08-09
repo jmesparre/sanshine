@@ -23,9 +23,9 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
                     className="md:hidden"
                 >
                     <nav className="flex flex-col space-y-4 py-4">
-                        <NavLink href="/consultas" number="01">Consultas</NavLink>
-                        <NavLink href="/workshops" number="02">Workshops</NavLink>
-                        <NavLink href="/programas-detox" number="03">Programas Detox</NavLink>
+                        <NavLink href="/consultas" number="01">Taller de Inteligencia Gastro Intestinal</NavLink>
+                        <NavLink href="/workshops" number="02">Detox Solar Grupal</NavLink>
+                        <NavLink href="/programas-detox" number="03">Detox Solar Individual</NavLink>
                         <NavLink href="/productos" number="04">Productos</NavLink>
                         <NavLink href="/mentorias" number="05">Mentorias</NavLink>
                         <NavLink href="/limpieza-epatica" number="06">Limpieza Epática</NavLink>

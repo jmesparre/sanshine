@@ -26,7 +26,7 @@ export default function ClientLayout({
         <AuthProvider>
             <CurrencyProvider>
                 <Header />
-                <main className="flex-grow">{children}</main>
+                <main className="flex-grow bg-background">{children}</main>
                 <Footer />
                 <LoginModal />
             </CurrencyProvider>

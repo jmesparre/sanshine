@@ -19,9 +19,9 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white w-full px-9 relative z-50">
+    <header className="w-full px-9 relative z-50">
       {/* Top Bar */}
-      <div className="flex justify-between items-center py-4 border-b border-gray-200">
+      <div className="flex justify-between items-center py-4 border-b border-black">
         <div className="text-2xl font-bold tracking-wider">
           <Link href="/">
             <>
@@ -46,12 +46,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Sub Navigation */}
-      <nav className="hidden md:flex justify-between items-center py-4">
-        <NavLink href="/consultas" number="01">Workshop Gastrointestinal</NavLink>
-        <NavLink href="/workshops" number="02">Detox Grupal</NavLink>
-        <NavLink href="/programas-detox" number="03">Detox Individual</NavLink>
-      </nav>
+    
 
       {/* Mobile Menu */}
       <MobileMenu isOpen={isMobileMenuOpen} />
