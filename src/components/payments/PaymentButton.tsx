@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { Price, PaymentMethod, Service } from "@/types";
+import { Service } from "@/types";
 
 interface PaymentButtonProps {
-  price: Price;
-  method: PaymentMethod;
+  price: { amount: number; currency: string };
+  method: { name: string; icon: string };
   service: Service;
 }
 
@@ -37,7 +37,7 @@ export default function PaymentButton({
             },
             body: JSON.stringify({
               id: service.id,
-              title: service.title,
+              title: service.leftColumn.title,
               unit_price: price.amount,
               currency_id: price.currency,
             }),

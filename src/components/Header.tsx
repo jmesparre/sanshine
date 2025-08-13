@@ -23,14 +23,12 @@ const Header = () => {
             </>
           </Link>
         </div>
-        <div className="hidden md:flex items-center space-x-6">
-          <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900">
+        <div className="flex items-center space-x-6">
+          <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900 hidden md:block">
             Contactame
           </Link>
-          <div className="h-6 border-l border-black"></div>
+          <div className="h-6 border-l border-black hidden md:block"></div>
           <AuthButton />
-        </div>
-        <div className="md:hidden flex items-center">
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-gray-600 hover:text-gray-900">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>

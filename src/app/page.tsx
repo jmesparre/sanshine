@@ -1,11 +1,60 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { services } from "@/lib/constants";
+import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { Service } from "@/types";
 import PaymentSection from "@/components/payments/PaymentSection";
 import Accordion from "@/components/ui/Accordion";
+import Spinner from "@/components/ui/Spinner";
+import DynamicIcon from "@/components/ui/DynamicIcon";
+import { Key } from "react";
 
 export default function Home() {
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const serviceImages: { [key: string]: string } = {
+    'taller-ig': '/placeholder-producto.jpg',
+    'detox-grupal': '/placeholder-producto.jpg',
+    'detox-individual': '/placeholder-producto.jpg',
+  };
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const q = query(
+          collection(db, "services"),
+          where("isActive", "==", true),
+          orderBy("order", "asc")
+        );
+        const querySnapshot = await getDocs(q);
+        const servicesData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Service));
+        setServices(servicesData);
+      } catch (error) {
+        console.error("Error fetching services: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  useEffect(() => {
+    if (!loading && window.location.hash) {
+      const id = window.location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: 'smooth',
+        });
+      }
+    }
+  }, [loading]);
+
   return (
     <main className="">
       <div className="px-9 py-0">
@@ -36,7 +85,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Enfoque Orgánico Section */}
+        {/* Descripcion Section */}
         <section className="grid px-4 md:grid-cols-7 gap-16 items-start mb-32">
           {/* Left Column */}
           <div className="md:col-span-2">
@@ -63,67 +112,59 @@ export default function Home() {
         <hr className="pb-15 border-black"/>
 
         {/* Services Sections */}
-        {services.map((service, index) => (
-          <section
-            key={service.id}
-            
-          >
-            <div className="px-4 grid md:grid-cols-2 gap-1 items-start mb-52">
-            {/* Left Column */}
-            <div className="space-y-8 pr-20">
-                <span className="text-[3.3rem] text-[#a8a427] font-alegreya ">
-                  {`0${index + 1}`}/
-                </span>
-                <h3 className="text-[2.9rem] mb-5 leading-13 pt-1 font-semibold font-alegreya w-6/7">
-                  {service.title}
-                </h3>
-              <div className="space-y-3.5">
-                {service.features.map((feature) => (
-                  <div key={feature} className="flex items-center space-x-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-gray-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    <span className="italic font-light">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <PaymentSection service={service} />
-            </div>
-            {/* Right Column */}
-            <div className="space-y-8 pt-5">
-              <div className="relative">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  width={600}
-                  height={400}
-                  className="rounded-3xl object-cover"
-                />
-                
-              </div>
-              <p className="text-md leading-relaxed">{service.description}</p>
-              {service.accordionItems && (
-                <div className="pt-8">
-                  <p className="mb-4">Donde dividiremos en 4 etapas:</p>
-                  <Accordion items={service.accordionItems} />
+        {loading ? (
+          <div className="flex justify-center items-center min-h-screen">
+            <Spinner />
+          </div>
+        ) : (
+          services.map((service, index) => (
+            <section
+              key={service.id}
+              id={service.id}
+            >
+              <div className="px-4 grid md:grid-cols-2 gap-1 items-start mb-52">
+              {/* Left Column */}
+              <div className="space-y-8 pr-20">
+                  <span className="text-[3.3rem] text-[#a8a427] font-alegreya ">
+                    {`0${index + 1}`}/
+                  </span>
+                  <h3 className="text-[2.9rem] mb-5 leading-13 pt-1 font-semibold font-alegreya w-6/7">
+                    {service.leftColumn.title}
+                  </h3>
+                <div className="space-y-3.5">
+                  {service.leftColumn.bulletPoints.map((point, idx) => (
+                    <div key={idx} className="flex items-center space-x-3">
+                      <DynamicIcon name={point.icon as any} className="h-6 w-6 text-gray-500" />
+                      <span className="italic font-light">{point.text}</span>
+                    </div>
+                  ))}
                 </div>
-              )}
-            </div>
-            </div>
-            <hr className="pb-20 border-black" />
-          </section>
-        ))}
+                <PaymentSection service={service} />
+              </div>
+              {/* Right Column */}
+              <div className="space-y-8 pt-5">
+                <div className="relative">
+                  <Image
+                    src={serviceImages[service.id]}
+                    alt={service.leftColumn.title}
+                    width={600}
+                    height={400}
+                    className="rounded-3xl object-cover"
+                  />
+                  
+                </div>
+                <p className="text-md leading-relaxed whitespace-pre-line mb-4">{service.rightColumn.text}</p>
+                {service.rightColumn.accordion && service.rightColumn.accordion.length > 0 && (
+                  <div>
+                    <Accordion items={service.rightColumn.accordion} />
+                  </div>
+                )}
+              </div>
+              </div>
+              <hr className="pb-20 border-black" />
+            </section>
+          ))
+        )}
       </div>
     </main>
   );

@@ -21,7 +21,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
           onClick={onClose}
         >
           <motion.div
-            className="bg-background rounded-lg shadow-xl p-10 w-3/4"
+            className="bg-background rounded-lg shadow-xl p-4 w-3/4 h-[90vh]"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 50, opacity: 0 }}

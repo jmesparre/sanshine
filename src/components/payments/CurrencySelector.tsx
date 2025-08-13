@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Currency } from "@/types";
+import { Currency } from "@/context/CurrencyContext";
 import { currencies } from "@/lib/constants";
 
 interface CurrencySelectorProps {
@@ -16,14 +16,12 @@ export default function CurrencySelector({
 }: CurrencySelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSelect = (currencyCode: Currency) => {
-    onChange(currencyCode);
+  const handleSelect = (currency: Currency) => {
+    onChange(currency);
     setIsOpen(false);
   };
 
-  const selectedCurrencyData = currencies.find(
-    (c) => c.code === selectedCurrency
-  );
+  const selectedCurrencyData = selectedCurrency;
 
   return (
     <div className="relative">
@@ -59,15 +57,15 @@ export default function CurrencySelector({
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute z-999 w-full mt-1 bg-accent rounded-lg shadow-lg">
+        <div className="absolute z-10 w-full mt-1 bg-white rounded-lg shadow-lg">
           {currencies
-            .filter((c) => c.code !== selectedCurrency)
+            .filter((c) => c.code !== selectedCurrency.code)
             .map((currency) => (
               <button
                 key={currency.code}
-              onClick={() => handleSelect(currency.code as Currency)}
-              className="flex items-center w-full px-4 py-2 text-left hover:bg-background"
-            >
+                onClick={() => handleSelect(currency)}
+                className="flex items-center w-full px-4 py-2 text-left hover:bg-gray-100"
+              >
               <Image
                 src={currency.flag}
                 alt={currency.name}

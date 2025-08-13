@@ -1,14 +1,22 @@
-export type Currency = 'ARG' | 'USD' | 'EUR' | 'MEX';
+import { Timestamp } from 'firebase/firestore';
 
-export interface PaymentMethod {
-  name: string;
-  icon: string;
+
+export interface Order {
+  id: string;
+  userId: string;
+  userName: string;
+  userEmail: string;
+  serviceName: string;
+  serviceId: string;
+  amount: number;
+  currency: string;
+  status: 'pending' | 'paid' | 'cancelled';
+  createdAt: Timestamp;
+  paymentMethod: 'mercadopago' | 'paypal' | 'transfer';
 }
 
-export interface Price {
-  currency: Currency;
-  amount: number;
-  paymentMethods: PaymentMethod[];
+export interface Prices {
+  [key: string]: number;
 }
 
 export interface AccordionItem {
@@ -16,14 +24,27 @@ export interface AccordionItem {
   content: string;
 }
 
+export interface BulletPoint {
+  text: string;
+  icon: string;
+}
+
+export interface LeftColumn {
+  title: string;
+  prices: Prices;
+  bulletPoints: BulletPoint[];
+}
+
+export interface RightColumn {
+  image: string;
+  text: string;
+  accordion: AccordionItem[];
+}
+
 export interface Service {
   id: string;
-  title: string;
-  features: string[];
-  prices: Price[];
-  image: string;
-  description: string;
-  faq?: string;
-  targetAudience?: string;
-  accordionItems?: AccordionItem[];
+  isActive: boolean;
+  order: number;
+  leftColumn: LeftColumn;
+  rightColumn: RightColumn;
 }

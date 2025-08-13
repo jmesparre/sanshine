@@ -4,12 +4,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import AuthButton from "../auth/AuthButton";
 
-const NavLink = ({ href, number, children }: { href: string; number: string; children: React.ReactNode }) => (
-    <Link href={href} className="text-gray-600 hover:text-gray-900 transition-colors duration-300 flex items-center space-x-2">
-        <span>{children}</span>
-        <span className="text-xs text-gray-400">{number}</span>
-    </Link>
-);
+const NavLink = ({ href, number, children }: { href: string; number: string; children: React.ReactNode }) => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: "smooth",
+            });
+        }
+    };
+
+    return (
+        <a href={href} onClick={handleClick} className="text-gray-600 hover:text-gray-900 transition-colors duration-300 flex items-center space-x-2">
+            <span>{children}</span>
+            <span className="text-xs text-gray-400">{number}</span>
+        </a>
+    );
+};
 
 const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
     return (
@@ -20,15 +34,12 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.2 }}
-                    className="md:hidden"
+                    className="absolute top-full right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-md shadow-lg"
                 >
-                    <nav className="flex flex-col space-y-4 py-4">
-                        <NavLink href="/consultas" number="01">Taller de Inteligencia Gastro Intestinal</NavLink>
-                        <NavLink href="/workshops" number="02">Detox Solar Grupal</NavLink>
-                        <NavLink href="/programas-detox" number="03">Detox Solar Individual</NavLink>
-                        <NavLink href="/productos" number="04">Productos</NavLink>
-                        <NavLink href="/mentorias" number="05">Mentorias</NavLink>
-                        <NavLink href="/limpieza-epatica" number="06">Limpieza Epática</NavLink>
+                    <nav className="flex flex-col space-y-4 p-4">
+                        <NavLink href="#taller-ig" number="01">Taller de Inteligencia Gastro Intestinal</NavLink>
+                        <NavLink href="#detox-grupal" number="02">Detox Solar Grupal</NavLink>
+                        <NavLink href="#detox-individual" number="03">Detox Solar Individual</NavLink>
                         <div className="border-t border-gray-200 pt-4">
                             <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900">
                                 Contactame

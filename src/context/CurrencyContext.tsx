@@ -1,8 +1,10 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import { Currency } from "@/types";
 import { currencies } from "@/lib/constants";
+
+// Define the Currency type based on the structure in constants
+export type Currency = (typeof currencies)[number];
 
 interface CurrencyContextType {
   selectedCurrency: Currency;
@@ -12,7 +14,7 @@ interface CurrencyContextType {
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
 
 export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
-  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(currencies[0].code as Currency);
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(currencies[0]);
 
   return (
     <CurrencyContext.Provider value={{ selectedCurrency, setSelectedCurrency }}>
