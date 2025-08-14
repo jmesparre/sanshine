@@ -46,9 +46,11 @@ export default function Home() {
       const id = window.location.hash.substring(1);
       const element = document.getElementById(id);
       if (element) {
-        window.scrollTo({
-          top: element.offsetTop,
-          behavior: 'smooth',
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: element.offsetTop,
+            behavior: 'smooth',
+          });
         });
       }
     }
