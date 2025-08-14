@@ -29,22 +29,18 @@ export interface BulletPoint {
   icon: string;
 }
 
-export interface LeftColumn {
-  title: string;
-  prices: Prices;
-  bulletPoints: BulletPoint[];
-}
-
-export interface RightColumn {
-  image: string;
-  text: string;
-  accordion: AccordionItem[];
-}
-
 export interface Service {
   id: string;
   isActive: boolean;
   order: number;
-  leftColumn: LeftColumn;
-  rightColumn: RightColumn;
+  leftColumn: {
+    title: string;
+    prices: Prices;
+    bulletPoints: BulletPoint[];
+  };
+  rightColumn: {
+    image: string;
+    text: string;
+    accordion: AccordionItem[];
+  };
 }

@@ -1,5 +1,3 @@
-import { Service } from '@/types';
-
 export const currencies = [
   {
     code: 'ARS',

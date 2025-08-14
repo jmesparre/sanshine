@@ -1,17 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { getAuth } from 'firebase-admin/auth';
-import { initializeApp, getApps } from 'firebase-admin/app';
 
-// Initialize Firebase Admin SDK
-const apps = getApps();
-if (!apps.length) {
-  initializeApp();
-}
-
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
-  const serviceId = params.id;
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id: serviceId } = await params;
   const body = await request.json();
 
   // Basic Authentication Check (replace with your actual admin auth logic)

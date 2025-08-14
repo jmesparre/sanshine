@@ -1,7 +1,7 @@
 "use client";
 
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import type { OnApproveData, CreateOrderData, OnApproveActions, CreateOrderActions } from "@paypal/paypal-js";
+import type { OnApproveData, OnApproveActions } from "@paypal/paypal-js";
 import { useRouter } from 'next/navigation';
 
 interface PaypalPagoButtonProps {
@@ -18,7 +18,7 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
     intent: "capture",
   };
 
-  const createOrder = (_data: CreateOrderData, _actions: CreateOrderActions) => {
+  const createOrder = () => {
     return fetch("/api/create-paypal-order", {
       method: "POST",
       headers: {

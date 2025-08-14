@@ -9,7 +9,6 @@ import PaymentSection from "@/components/payments/PaymentSection";
 import Accordion from "@/components/ui/Accordion";
 import Spinner from "@/components/ui/Spinner";
 import DynamicIcon from "@/components/ui/DynamicIcon";
-import { Key } from "react";
 
 export default function Home() {
   const [services, setServices] = useState<Service[]>([]);
@@ -134,7 +133,7 @@ export default function Home() {
                 <div className="space-y-3.5">
                   {service.leftColumn.bulletPoints.map((point, idx) => (
                     <div key={idx} className="flex items-center space-x-3">
-                      <DynamicIcon name={point.icon as any} className="h-6 w-6 text-gray-500" />
+                      <DynamicIcon name={point.icon as keyof typeof import('lucide-react')} className="h-6 w-6 text-gray-500" />
                       <span className="italic font-light">{point.text}</span>
                     </div>
                   ))}

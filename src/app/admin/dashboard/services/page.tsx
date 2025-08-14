@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
-import { Service } from '@/types';
+import { Service, BulletPoint } from '@/types';
 
 const servicesToEdit = [
   { id: 'taller-ig', name: 'Taller de Inteligencia Gastro Intestinal' },
@@ -27,7 +27,7 @@ const ServicesPage = () => {
             // Ensure bulletPoints is always an array
             const data = docSnap.data();
             const bulletPoints = data.leftColumn.bulletPoints || [];
-            data.leftColumn.bulletPoints = bulletPoints.map((bp: any) => 
+            data.leftColumn.bulletPoints = bulletPoints.map((bp: BulletPoint | { text: string; icon: string; }) => 
               typeof bp === 'string' ? { text: bp, icon: 'CheckCircle' } : bp
             );
             return { id: docSnap.id, ...data } as Service;
@@ -56,16 +56,22 @@ const ServicesPage = () => {
     fetchServices();
   }, []);
 
-  const handleInputChange = (serviceId: string, section: 'leftColumn' | 'rightColumn', field: string, value: any) => {
+  const handleInputChange = <T extends 'leftColumn' | 'rightColumn', K extends keyof Service[T]>(
+    serviceId: string,
+    section: T,
+    field: K,
+    value: Service[T][K]
+  ) => {
     setServices(prevServices =>
       prevServices.map(service => {
         if (service.id === serviceId) {
-          const updatedService = { ...service };
-          if (section === 'leftColumn') {
-            (updatedService.leftColumn as any)[field] = value;
-          } else if (section === 'rightColumn') {
-            (updatedService.rightColumn as any)[field] = value;
-          }
+          const updatedService = {
+            ...service,
+            [section]: {
+              ...service[section],
+              [field]: value,
+            },
+          };
           return updatedService;
         }
         return service;
