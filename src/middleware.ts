@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { auth } from '@/lib/firebase-admin'; // We will create this file
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -12,17 +11,25 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/', request.url));
     }
 
+    const verifyUrl = new URL('/api/auth/verify-token', request.url);
     try {
-      const decodedToken = await auth.verifyIdToken(token);
-      const adminUid = process.env.ADMIN_UID; // Notice no NEXT_PUBLIC_
+      const response = await fetch(verifyUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+      });
 
-      if (decodedToken.uid !== adminUid) {
+      const { isAdmin } = await response.json();
+
+      if (!isAdmin) {
         return NextResponse.redirect(new URL('/', request.url));
       }
 
       return NextResponse.next();
     } catch (error) {
-      console.error('Error verifying token:', error);
+      console.error('Error verifying token in middleware:', error);
       return NextResponse.redirect(new URL('/', request.url));
     }
   }
