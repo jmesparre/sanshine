@@ -57,14 +57,14 @@ export default function CurrencySelector({
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute z-10 w-full mt-1 bg-white rounded-lg shadow-lg">
+        <div className="absolute w-full mt-1 z-998 bg-accent rounded-lg shadow-lg">
           {currencies
             .filter((c) => c.code !== selectedCurrency.code)
             .map((currency) => (
               <button
                 key={currency.code}
                 onClick={() => handleSelect(currency)}
-                className="flex items-center w-full px-4 py-2 text-left hover:bg-gray-100"
+                className="flex items-center w-full px-4 py-2 rounded-lg text-left hover:bg-background"
               >
               <Image
                 src={currency.flag}

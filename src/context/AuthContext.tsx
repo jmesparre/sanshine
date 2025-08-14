@@ -9,6 +9,7 @@ import {
   User,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase";
+import Cookies from 'js-cookie';
 
 interface AuthContextType {
   user: User | null;
@@ -59,14 +60,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logOut = async () => {
     try {
       await signOut(auth);
+      Cookies.remove('token');
     } catch (error) {
       console.error("Error during sign out:", error);
     }
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        const token = await currentUser.getIdToken();
+        Cookies.set('token', token, { expires: 1 }); // Expires in 1 day
+        setUser(currentUser);
+      } else {
+        Cookies.remove('token');
+        setUser(null);
+      }
       setLoading(false);
     });
 
