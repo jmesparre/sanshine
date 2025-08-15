@@ -51,7 +51,7 @@ const ContactForm = () => {
       toast({
         title: '¡Mensaje Enviado!',
         description: 'Gracias por contactarnos. Te responderemos a la brevedad.',
-        variant: 'success',
+        variant: 'default',
       });
       reset();
       setIsSubmitted(true);
