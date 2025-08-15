@@ -34,13 +34,13 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full right-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-md shadow-lg"
+                    className="absolute top-full right-0 mt-2 bg-background border border-black mr-5 dark:bg-gray-800 rounded-md shadow-lg"
                 >
-                    <nav className="flex flex-col space-y-4 p-4">
+                    <nav className="flex flex-col space-y-4 px-8 py-8  text-md">
                         <NavLink href="#taller-ig" number="01">Taller de Inteligencia Gastro Intestinal</NavLink>
                         <NavLink href="#detox-grupal" number="02">Detox Solar Grupal</NavLink>
                         <NavLink href="#detox-individual" number="03">Detox Solar Individual</NavLink>
-                        <div className="border-t border-gray-200 pt-4">
+                        <div className="border-t border-black pt-4">
                             <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900">
                                 Contactame
                             </Link>

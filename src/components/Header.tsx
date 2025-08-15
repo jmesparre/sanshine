@@ -24,7 +24,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex items-center space-x-6">
-          <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900 hidden md:block">
+          <Link href="/#contacto" className="text-sm text-gray-600 hover:text-gray-900 hidden md:block">
             Contactame
           </Link>
           <div className="h-6 border-l border-black hidden md:block"></div>

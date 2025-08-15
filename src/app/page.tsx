@@ -9,15 +9,16 @@ import PaymentSection from "@/components/payments/PaymentSection";
 import Accordion from "@/components/ui/Accordion";
 import Spinner from "@/components/ui/Spinner";
 import DynamicIcon from "@/components/ui/DynamicIcon";
+import ContactForm from "@/components/contact/ContactForm";
 
 export default function Home() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
 
   const serviceImages: { [key: string]: string } = {
-    'taller-ig': '/placeholder-producto.jpg',
-    'detox-grupal': '/placeholder-producto.jpg',
-    'detox-individual': '/placeholder-producto.jpg',
+    'taller-ig': '/taller-ig.webp',
+    'detox-grupal': '/detox-grupal.webp',
+    'detox-individual': '/detox-individual.webp',
   };
 
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function Home() {
           {/* Left Column */}
           <div>
             <p className="text-lg mb-3 ">Lic. Fernanda Sarro</p>
-            <h1 className="text-6xl font-semibold font-alegreya mb-6">
+            <h1 className="text-6xl w-5/6 font-semibold font-alegreya mb-6">
               Especialista en Nutrición Depurativa y Regenerativa
             </h1>
             <ul className="space-y-3 text-md italic">
@@ -76,7 +77,7 @@ export default function Home() {
           {/* Right Column */}
           <div className="relative ">
             <Image
-              src="/placeholder-fernanda.png" // Placeholder
+              src="/placeholder-fernanda.png" 
               alt="Fernanda Sarro"
               width={600}
               height={600}
@@ -98,7 +99,7 @@ export default function Home() {
              <b>¿Por qué cuidar tu intestino y microbiota intestinal?</b> 
              <br />
               Tu digestión es mucho más que absorber nutrientes: es tu segundo cerebro, regula tus
-              hormonas, tu energía, tu ánimo y tu inflamación.
+              hormonas, tu energía, tu ánimo y tu inflamación.<br />
               Si tu intestino está inflamado, parasitado o sobrecargado, podés sentirte cansad@, con la
               mente nublada, la piel reactiva, ansiedad o dificultad para bajar de peso.
               <br />
@@ -166,6 +167,7 @@ export default function Home() {
             </section>
           ))
         )}
+        <ContactForm />
       </div>
     </main>
   );
