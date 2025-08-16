@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     }
 
     const decodedToken = await auth.verifyIdToken(token);
-    const adminUid = process.env.NEXT_PUBLIC_ADMIN_UID;
+    const adminUid = process.env.ADMIN_UID;
 
     if (decodedToken.uid === adminUid) {
       return NextResponse.json({ isAdmin: true });
