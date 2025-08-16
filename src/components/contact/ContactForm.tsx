@@ -50,7 +50,7 @@ const ContactForm = () => {
 
       toast({
         title: '¡Mensaje Enviado!',
-        description: 'Gracias por contactarnos. Te responderemos a la brevedad.',
+        description: 'Gracias por contactarte.',
         variant: 'default',
       });
       reset();
@@ -68,44 +68,45 @@ const ContactForm = () => {
 
   return (
     <section id="contacto" className="py-1 pb-20">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row gap-12 items-center">
+      <div className="px-2">
+        <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2">
-            <h2 className="text-5xl font-bold text-gray-800 mb-4 font-serif">Pongámonos en contacto</h2>
-            <p className="text-gray-700 mb-4 ">
-               Estoy aquí para ayudarte mándame un mensaje con tu consulta.
-            </p>
-            <p className="text-gray-700 mb-8">
-              Te responderemos en 24hs.
-            </p>
-            <div className="space-y-4 text-md pt-5">
-              <a href="https://www.instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
-                <Instagram size={24} className="text-gray-500" />
-                <span>@tu-usuario</span>
-              </a>
-              <a href="mailto:tu-email@example.com" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
-                <Mail size={24} className="text-gray-500" />
-                <span>tu-email@example.com</span>
-              </a>
-              <a href="https://wa.me/tu-numero" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
-                <MessageCircle size={24} className="text-gray-500" />
-                <span>WhatsApp</span>
-              </a>
+            <div className='w-5/6'>
+              <h2 className="text-5xl font-bold text-gray-800 mb-4 pt-10 font-serif">Pongámonos en contacto</h2>
+              <p className="text-gray-700 mb-4 ">
+                Estoy aquí para ayudarte mándame un mensaje con tu consulta.
+              </p>
+              <p className="text-gray-700 mb-8">
+                Te responderemos en 24hs.
+              </p>
+              <div className="space-y-4 text-md pt-5">
+                <a href="https://www.instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
+                  <Instagram size={24} className="text-gray-500" />
+                  <span>@tu-usuario</span>
+                </a>
+                <a href="mailto:tu-email@example.com" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
+                  <Mail size={24} className="text-gray-500" />
+                  <span>tu-email@example.com</span>
+                </a>
+                <a href="https://wa.me/tu-numero" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
+                  <MessageCircle size={24} className="text-gray-500" />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
             </div>
           </div>
-          <div className="md:w-1/2 w-full">
-            <Card className=" border-1 border-black mt-34 rounded-2xl shadow-none p-4">
+          <div className="md:w-1/2 w-full ">
+            <Card className=" border-1  border-black mt-34 rounded-2xl shadow-none p-4">
            
               <CardContent>
                 {isSubmitted ? (
                   <div className="text-center py-12">
                     <h3 className="text-2xl font-bold text-primary mb-4">¡Gracias por tu mensaje!</h3>
-                    <p className="text-gray-600">Hemos recibido tu consulta y te responderemos a la brevedad.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 px-2 py-7">
                     <div className="space-y-1">
-                      <Label htmlFor="name" className="text-gray-800 font-semibold">Nombre</Label>
+                      <Label htmlFor="name" className="font-light">Nombre</Label>
                       <Input
                         id="name"
                         {...register('name')}
@@ -114,7 +115,7 @@ const ContactForm = () => {
                       {errors.name && <p className="text-red-300 text-sm">{errors.name.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-gray-800 font-semibold">Correo Electrónico</Label>
+                      <Label htmlFor="email" className="font-light">Correo Electrónico</Label>
                       <Input
                         id="email"
                         type="email"
@@ -124,7 +125,7 @@ const ContactForm = () => {
                       {errors.email && <p className="text-red-300 text-sm">{errors.email.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-gray-800 font-semibold">Mensaje</Label>
+                      <Label htmlFor="message" className=" font-light">Mensaje</Label>
                       <Textarea
                         id="message"
                         {...register('message')}

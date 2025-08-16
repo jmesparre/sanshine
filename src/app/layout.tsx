@@ -26,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${rubik.variable} ${alegreya.variable} antialiased flex flex-col min-h-screen`}>
+    <html className="overflow-x-hidden" lang="en">
+      <body className={`${rubik.variable} ${alegreya.variable} antialiased  flex flex-col min-h-screen`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
