@@ -126,7 +126,7 @@ export default function Home() {
             >
               <div className="px-4 grid md:grid-cols-2 gap-1 items-start mb-52">
               {/* Left Column */}
-              <div className="space-y-8 sm:pr-20">
+              <div className="space-y-8 md:pr-10 lg:pr-20 ">
                   <span className="text-[3.3rem] text-[#a8a427] font-alegreya ">
                     {`0${index + 1}`}/
                   </span>

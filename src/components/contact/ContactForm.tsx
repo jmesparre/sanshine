@@ -72,7 +72,7 @@ const ContactForm = () => {
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2">
             <div className='w-5/6'>
-              <h2 className="text-5xl font-bold text-gray-800 mb-4 pt-10 font-serif">Pongámonos en contacto</h2>
+              <h2 className="text-5xl font-bold text-gray-800 mb-4 pt-20 pb-5 font-serif">Pongámonos en contacto</h2>
               <p className="text-gray-700 mb-4 ">
                 Estoy aquí para ayudarte mándame un mensaje con tu consulta.
               </p>
@@ -80,15 +80,15 @@ const ContactForm = () => {
                 Te responderemos en 24hs.
               </p>
               <div className="space-y-4 text-md pt-5">
-                <a href="https://www.instagram.com/tu-usuario" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
+                <a href="https://www.instagram.com/fernanda.sarro/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors">
                   <Instagram size={24} className="text-gray-500" />
-                  <span>@tu-usuario</span>
+                  <span>@fernanda.sarro</span>
                 </a>
                 <a href="mailto:tu-email@example.com" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
                   <Mail size={24} className="text-gray-500" />
-                  <span>tu-email@example.com</span>
+                  <span>fernandasarro21@gmail.com</span>
                 </a>
-                <a href="https://wa.me/tu-numero" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
+                <a href="https://api.whatsapp.com/send?phone=5491136857882&text=Hola%20Fer!%20%E2%9C%A8%0AMi%20nombre%20es%20%E2%80%A6%E2%80%A6%E2%80%A6%20%0AEstoy%20interesado%2Fa%20en%20%E2%80%A6%E2%80%A6%E2%80%A6..%20" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
                   <MessageCircle size={24} className="text-gray-500" />
                   <span>WhatsApp</span>
                 </a>
@@ -104,7 +104,7 @@ const ContactForm = () => {
                     <h3 className="text-2xl font-bold text-primary mb-4">¡Gracias por tu mensaje!</h3>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 px-2 py-7">
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 px-2 py-3 md:py-7">
                     <div className="space-y-1">
                       <Label htmlFor="name" className="font-light">Nombre</Label>
                       <Input
