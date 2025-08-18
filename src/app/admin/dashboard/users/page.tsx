@@ -15,7 +15,7 @@ const UsersPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const q = query(collection(db, 'users'), orderBy('lastLogin', 'desc'));
+    const q = query(collection(db, 'users'), orderBy('displayName', 'asc'));
 
     const unsubscribe = onSnapshot(
       q,

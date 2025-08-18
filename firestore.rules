@@ -8,6 +8,7 @@ service cloud.firestore {
 
     match /orders/{orderId} {
       allow read, write: if isAdmin();
+      allow create: if request.auth.uid == request.resource.data.userId;
     }
 
     match /users/{userId} {
