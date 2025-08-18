@@ -21,7 +21,7 @@ const Accordion = ({ items }: AccordionProps) => {
         <div key={index} className="border border-gray-600 rounded-lg">
           <button
             onClick={() => toggleAccordion(index)}
-            className="w-full text-sm text-left p-4 flex justify-between items-center"
+            className="w-full text-sm cursor-pointer text-left p-4 flex justify-between items-center"
           >
             <span>{item.title}</span>
             <motion.div

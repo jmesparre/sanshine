@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { LayoutDashboard, ShoppingCart, FileText } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, FileText, Users } from 'lucide-react';
 
 const AdminSidebar = () => {
   const pathname = usePathname();
@@ -24,6 +24,11 @@ const AdminSidebar = () => {
       href: '/admin/dashboard/services',
       label: 'Servicios',
       icon: FileText,
+    },
+    {
+      href: '/admin/dashboard/users',
+      label: 'Usuarios',
+      icon: Users,
     },
   ];
 

@@ -27,7 +27,7 @@ export default function CurrencySelector({
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full px-4 py-2 bg-accent rounded-lg"
+        className="flex cursor-pointer items-center justify-between w-full px-4 py-2 bg-accent rounded-lg"
       >
         <div className="flex items-center">
           <Image

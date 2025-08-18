@@ -74,10 +74,10 @@ const ContactForm = () => {
             <div className='w-5/6'>
               <h2 className="text-5xl font-bold text-gray-800 mb-4 pt-20 pb-5 font-serif">Pongámonos en contacto</h2>
               <p className="text-gray-700 mb-4 ">
-                Estoy aquí para ayudarte mándame un mensaje con tu consulta.
+                Estoy aquí para ayudarte, mándame un mensaje con tu consulta.
               </p>
               <p className="text-gray-700 mb-8">
-                Te responderemos en 24hs.
+                xxxxxxx
               </p>
               <div className="space-y-4 text-md pt-5">
                 <a href="https://www.instagram.com/fernanda.sarro/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors">

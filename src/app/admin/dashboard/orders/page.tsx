@@ -16,6 +16,19 @@ const OrdersPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
 
+  const translateStatus = (status: 'pending' | 'paid' | 'cancelled') => {
+    switch (status) {
+      case 'pending':
+        return 'Pendiente';
+      case 'paid':
+        return 'Pagada';
+      case 'cancelled':
+        return 'Cancelada';
+      default:
+        return status;
+    }
+  };
+
   const filteredOrders = orders.filter((order) => {
     const searchTermMatch = order.userName.toLowerCase().includes(searchTerm.toLowerCase());
     const statusMatch = statusFilter === 'all' || order.status === statusFilter;
@@ -129,7 +142,7 @@ const OrdersPage = () => {
                           : 'destructive'
                       }
                     >
-                      {order.status}
+                      {translateStatus(order.status)}
                     </Badge>
                   </TableCell>
                   <TableCell>

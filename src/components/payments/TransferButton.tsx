@@ -11,7 +11,7 @@ const TransferButton: React.FC<TransferButtonProps> = ({ onClick, price, method 
   return (
     <button
       onClick={onClick}
-      className="w-full bg-secondary text-white rounded-lg p-4 flex items-center justify-between hover:bg-secondary-foreground transition-colors"
+      className="w-full bg-secondary cursor-pointer text-white rounded-lg p-4 flex items-center justify-between hover:bg-secondary-foreground transition-colors"
     >
       <div className="flex items-center">
         <Image

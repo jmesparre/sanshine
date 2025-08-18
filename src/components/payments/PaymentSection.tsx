@@ -147,14 +147,14 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
         <div className="space-y-3 pt-4">
           <button
             onClick={() => openModal("¿Para quién es este programa?", serviceModalContent.targetAudience)}
-            className="w-full border-gray-500 text-left p-3 border rounded-lg flex justify-between items-center"
+            className="w-full border-gray-500 cursor-pointer text-left p-3 border rounded-lg flex justify-between items-center"
           >
             <span className="text-sm">¿Para quién es este programa?</span>
             <span>+</span>
           </button>
           <button
             onClick={() => openModal("Preguntas Frecuentes", serviceModalContent.faq)}
-            className="w-full text-left p-3 border border-gray-500 rounded-lg flex justify-between items-center"
+            className="w-full text-left cursor-pointer p-3 border border-gray-500 rounded-lg flex justify-between items-center"
           >
             <span className="text-sm">Preguntas Frecuentes</span>
             <span>+</span>

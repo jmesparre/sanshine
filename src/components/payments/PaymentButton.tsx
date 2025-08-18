@@ -72,7 +72,7 @@ export default function PaymentButton({
     <button
       onClick={handlePayment}
       disabled={isLoading}
-      className="w-full bg-secondary text-white rounded-lg p-4 flex items-center justify-between hover:bg-secondary-foreground transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
+      className="w-full bg-secondary cursor-pointer text-white rounded-lg p-4 flex items-center justify-between hover:bg-secondary-foreground transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
     >
       <div className="flex items-center">
         <Image
