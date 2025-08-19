@@ -12,7 +12,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
   return (
     <div className="flex h-screen ">
       <AdminSidebar />
-      <main className="flex-1 p-6 overflow-y-auto">
+      <main className="flex-1 p-6 overflow-y-scroll">
         {children}
         <Toaster />
       </main>
