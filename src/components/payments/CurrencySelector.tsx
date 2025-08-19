@@ -21,7 +21,7 @@ export default function CurrencySelector({
 
   useEffect(() => {
     currencies.forEach((currency) => {
-      const img = new (window as any).Image();
+      const img = document.createElement('img');
       img.src = currency.flag;
     });
   }, []);
