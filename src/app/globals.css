@@ -147,3 +147,13 @@ body {
   border-left-color: #000;
   animation: spin 1s ease-in-out infinite;
 }
+
+
+
+tr.rdp-weekdays {
+    display: block;
+}
+
+th.rdp-weekday {
+    padding-right: 17px;
+}

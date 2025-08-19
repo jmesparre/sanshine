@@ -15,9 +15,9 @@ export async function POST(request: NextRequest) {
     }
 
     const decodedToken = await auth.verifyIdToken(token);
-    const adminUid = process.env.ADMIN_UID;
+    const adminUids = process.env.ADMIN_UID ? process.env.ADMIN_UID.split(',') : [];
 
-    if (decodedToken.uid === adminUid) {
+    if (adminUids.includes(decodedToken.uid)) {
       return NextResponse.json({ isAdmin: true });
     } else {
       return NextResponse.json({ isAdmin: false });

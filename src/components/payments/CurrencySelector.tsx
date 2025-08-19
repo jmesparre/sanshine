@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Currency } from "@/context/CurrencyContext";
 import { currencies } from "@/lib/constants";
+import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 interface CurrencySelectorProps {
   selectedCurrency: Currency;
@@ -16,6 +17,15 @@ export default function CurrencySelector({
 }: CurrencySelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const ref = useOutsideClick(() => setIsOpen(false));
+
+  useEffect(() => {
+    currencies.forEach((currency) => {
+      const img = new (window as any).Image();
+      img.src = currency.flag;
+    });
+  }, []);
+
   const handleSelect = (currency: Currency) => {
     onChange(currency);
     setIsOpen(false);
@@ -24,7 +34,7 @@ export default function CurrencySelector({
   const selectedCurrencyData = selectedCurrency;
 
   return (
-    <div className="relative">
+    <div className="relative" ref={ref}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex cursor-pointer items-center justify-between w-full px-4 py-2 bg-accent rounded-lg"

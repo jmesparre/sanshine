@@ -73,16 +73,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const token = await currentUser.getIdToken();
         Cookies.set('token', token, { expires: 1 }); // Expires in 1 day
         setUser(currentUser);
-
-        // Create or update user document in Firestore
-        const userRef = doc(db, "users", currentUser.uid);
-        setDoc(userRef, {
-          displayName: currentUser.displayName,
-          email: currentUser.email,
-          photoURL: currentUser.photoURL,
-          lastLogin: serverTimestamp(),
-        }, { merge: true });
-
       } else {
         Cookies.remove('token');
         setUser(null);
@@ -92,6 +82,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      const userRef = doc(db, "users", user.uid);
+      setDoc(userRef, {
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        lastLogin: serverTimestamp(),
+      }, { merge: true });
+    }
+  }, [user]);
 
   return (
     <AuthContext.Provider
