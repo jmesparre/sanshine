@@ -82,7 +82,11 @@ const UserDetailPage = () => {
                 orders.map((order) => (
                   <TableRow key={order.id}>
                     <TableCell>{order.serviceName}</TableCell>
-                    <TableCell>{new Date(order.createdAt.seconds * 1000).toLocaleDateString()}</TableCell>
+                    <TableCell>
+                      {order.createdAt && order.createdAt.seconds
+                        ? new Date(order.createdAt.seconds * 1000).toLocaleDateString()
+                        : 'Fecha no disponible'}
+                    </TableCell>
                     <TableCell>{order.amount} {order.currency}</TableCell>
                     <TableCell>
                       <Badge

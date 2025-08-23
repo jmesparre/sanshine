@@ -46,7 +46,7 @@ const ServicesPage = () => {
             order: index,
             leftColumn: {
               title: serviceInfo.name,
-              prices: { ARS: 0, USD: 0, EUR: 0, MXN: 0 },
+              prices: { MXN: 0, ARS: 0, USD: 0, EUR: 0 },
               bulletPoints: [
                 { text: '', icon: 'CheckCircle' },
                 { text: '', icon: 'CheckCircle' },

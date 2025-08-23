@@ -66,7 +66,7 @@ export default function Home() {
           <div>
             <p className="text-sm sm:text-lg mb-3 mt-5 sm:mt-3 ">Lic. Fernanda Sarro</p>
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-6">
-              Especialista en Nutrición Depurativa y Regenerativa
+              Tu Salud Comienza en los Intestinos Hipócrates
             </h1>
             <ul className="space-y-3 text-md italic mb-10 pt-2">
               <li><span className="text-primary">+</span> Taller de Inteligencia Gastro Intestinal</li>
@@ -91,7 +91,7 @@ export default function Home() {
         <section className="grid px-4 md:grid-cols-7 gap-16 items-start mb-32">
           {/* Left Column */}
           <div className="md:col-span-2">
-            <h2 className="text-4xl  md:text-4xl lg:text-5xl font-semibold font-alegreya">Nutrición Funcional y Depurativa:</h2>
+            <h2 className="text-4xl  md:text-4xl lg:text-5xl font-semibold font-alegreya">Especialista en Nutrición Depurativa y Regenerativa</h2>
           </div>
           {/* Right Column */}
           <div className="md:col-span-5 w-full">

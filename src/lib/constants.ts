@@ -1,4 +1,9 @@
 export const currencies = [
+ {
+    code: 'MXN',
+    name: 'Pesos Mexicanos',
+    flag: '/mex-flag.png',
+  },
   {
     code: 'ARS',
     name: 'Pesos Argentinos',
@@ -13,11 +18,6 @@ export const currencies = [
     code: 'EUR',
     name: 'Euros',
     flag: '/euro-flag.png',
-  },
-  {
-    code: 'MXN',
-    name: 'Pesos Mexicanos',
-    flag: '/mex-flag.png',
   },
 ];
 

@@ -127,7 +127,9 @@ const OrdersPage = () => {
                   <TableCell>{order.userName}</TableCell>
                   <TableCell>{order.serviceName}</TableCell>
                   <TableCell>
-                    {new Date(order.createdAt.seconds * 1000).toLocaleDateString()}
+                    {order.createdAt && order.createdAt.seconds
+                      ? new Date(order.createdAt.seconds * 1000).toLocaleDateString()
+                      : 'Fecha no disponible'}
                   </TableCell>
                   <TableCell>
                     {order.amount} {order.currency}

@@ -9,14 +9,16 @@ import { useOutsideClick } from "@/hooks/useOutsideClick";
 interface CurrencySelectorProps {
   selectedCurrency: Currency;
   onChange: (currency: Currency) => void;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 export default function CurrencySelector({
   selectedCurrency,
   onChange,
+  isOpen,
+  setIsOpen,
 }: CurrencySelectorProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
   const ref = useOutsideClick(() => setIsOpen(false));
 
   useEffect(() => {

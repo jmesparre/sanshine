@@ -25,6 +25,7 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTransferModalOpen, setIsTransferModalOpen] = useState(false);
+  const [isCurrencySelectorOpen, setIsCurrencySelectorOpen] = useState(false);
   const [displayModalContent, setDisplayModalContent] = useState({ title: "", content: "" });
 
   const selectedPrice = service.leftColumn.prices[selectedCurrency.code];
@@ -102,6 +103,8 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
           <CurrencySelector
             selectedCurrency={selectedCurrency}
             onChange={setSelectedCurrency}
+            isOpen={isCurrencySelectorOpen}
+            setIsOpen={setIsCurrencySelectorOpen}
           />
         </div>
       </div>
@@ -141,10 +144,16 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
               return null;
           }
         })()}
+        <p 
+          className="text-sm text-gray-500 pt-4 pb-0 mb-0 text-center cursor-pointer"
+          onClick={() => setIsCurrencySelectorOpen(!isCurrencySelectorOpen)}
+        >
+          Cambiar moneda
+        </p>
       </div>
 
       {serviceModalContent && (
-        <div className="space-y-3 pt-4">
+        <div className="space-y-3 pt-0">
           <button
             onClick={() => openModal("¿Para quién es este programa?", serviceModalContent.targetAudience)}
             className="w-full border-gray-500 cursor-pointer text-left p-3 border rounded-lg flex justify-between items-center"
