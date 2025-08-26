@@ -10,10 +10,15 @@ import Accordion from "@/components/ui/Accordion";
 import Spinner from "@/components/ui/Spinner";
 import DynamicIcon from "@/components/ui/DynamicIcon";
 import ContactForm from "@/components/contact/ContactForm";
+import Modal from "@/components/Modal";
+import { modalContent } from "@/lib/modal-content";
+import TargetAudienceModalContent from "@/components/TargetAudienceModalContent";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const serviceImages: { [key: string]: string } = {
     'taller-ig': '/taller-ig.webp',
@@ -169,6 +174,9 @@ export default function Home() {
         )}
         <ContactForm />
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <TargetAudienceModalContent content={modalContent.targetAudience} />
+      </Modal>
     </main>
   );
 }

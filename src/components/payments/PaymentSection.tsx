@@ -14,6 +14,7 @@ import TransferButton from "./TransferButton";
 import TransferModal from "./TransferModal";
 import Modal from "@/components/Modal";
 import { modalContent } from "@/lib/modal-content";
+import TargetAudienceModalContent from "@/components/TargetAudienceModalContent";
 
 interface PaymentSectionProps {
   service: Service;
@@ -26,18 +27,19 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isTransferModalOpen, setIsTransferModalOpen] = useState(false);
   const [isCurrencySelectorOpen, setIsCurrencySelectorOpen] = useState(false);
-  const [displayModalContent, setDisplayModalContent] = useState({ title: "", content: "" });
+  const [modalType, setModalType] = useState<"targetAudience" | "faq" | null>(null);
 
   const selectedPrice = service.leftColumn.prices[selectedCurrency.code];
   const serviceModalContent = modalContent[service.id as keyof typeof modalContent];
 
-  const openModal = (title: string, content: string) => {
-    setDisplayModalContent({ title, content });
+  const openModal = (type: "targetAudience" | "faq") => {
+    setModalType(type);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setModalType(null);
   };
 
   const handleTransferClick = () => {
@@ -68,22 +70,16 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
       router.push("/pago-pendiente");
     } catch (error) {
       console.error("Error creating order: ", error);
-      // Optionally, show an error message to the user
     }
   };
 
   const getLocale = (currencyCode: string) => {
     switch (currencyCode) {
-      case 'ARS':
-        return 'es-AR';
-      case 'MXN':
-        return 'es-MX';
-      case 'USD':
-        return 'en-US';
-      case 'EUR':
-        return 'es-ES';
-      default:
-        return 'es-AR';
+      case 'ARS': return 'es-AR';
+      case 'MXN': return 'es-MX';
+      case 'USD': return 'en-US';
+      case 'EUR': return 'es-ES';
+      default: return 'es-AR';
     }
   };
 
@@ -117,29 +113,11 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
           switch (selectedCurrency.code) {
             case 'USD':
             case 'EUR':
-              return (
-                <PaypalPagoButton
-                  amount={selectedPrice.toString() || '0'}
-                  currency={selectedCurrency.code}
-                  serviceName={service.leftColumn.title}
-                />
-              );
+              return <PaypalPagoButton amount={selectedPrice.toString() || '0'} currency={selectedCurrency.code} serviceName={service.leftColumn.title} />;
             case 'MXN': 
-              return (
-                <TransferButton
-                  onClick={handleTransferClick}
-                  price={{amount: selectedPrice, currency: 'MXN'}}
-                  method={{name: 'Transferencia Bancaria', icon: '/mex-flag.png'}}
-                />
-              );
+              return <TransferButton onClick={handleTransferClick} price={{amount: selectedPrice, currency: 'MXN'}} method={{name: 'Transferencia Bancaria', icon: '/mex-flag.png'}} />;
             case 'ARS':
-              return (
-                <PaymentButton
-                  price={{amount: selectedPrice, currency: 'ARS'}}
-                  method={{name: 'Mercado Pago', icon: '/arg-flag.png'}}
-                  service={service}
-                />
-              );
+              return <PaymentButton price={{amount: selectedPrice, currency: 'ARS'}} method={{name: 'Mercado Pago', icon: '/arg-flag.png'}} service={service} />;
             default:
               return null;
           }
@@ -154,15 +132,17 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
 
       {serviceModalContent && (
         <div className="space-y-3 pt-0">
+          {['detox-grupal', 'detox-individual'].includes(service.id) && (
+            <button
+              onClick={() => openModal("targetAudience")}
+              className="w-full border-gray-500 cursor-pointer text-left p-3 border rounded-lg flex justify-between items-center"
+            >
+              <span className="text-sm">¿Para quién es este programa?</span>
+              <span>+</span>
+            </button>
+          )}
           <button
-            onClick={() => openModal("¿Para quién es este programa?", serviceModalContent.targetAudience)}
-            className="w-full border-gray-500 cursor-pointer text-left p-3 border rounded-lg flex justify-between items-center"
-          >
-            <span className="text-sm">¿Para quién es este programa?</span>
-            <span>+</span>
-          </button>
-          <button
-            onClick={() => openModal("Preguntas Frecuentes", serviceModalContent.faq)}
+            onClick={() => openModal("faq")}
             className="w-full text-left cursor-pointer p-3 border border-gray-500 rounded-lg flex justify-between items-center"
           >
             <span className="text-sm">Preguntas Frecuentes</span>
@@ -175,8 +155,15 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
       )}
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <h2 className="text-2xl font-bold mb-4">{displayModalContent.title}</h2>
-        <p>{displayModalContent.content}</p>
+        {modalType === "targetAudience" && serviceModalContent.targetAudience && (
+          <TargetAudienceModalContent content={serviceModalContent.targetAudience} />
+        )}
+        {modalType === "faq" && (
+          <>
+            <h2 className="text-2xl font-bold mb-4">Preguntas Frecuentes</h2>
+            <p>{serviceModalContent.faq}</p>
+          </>
+        )}
       </Modal>
 
       <TransferModal
