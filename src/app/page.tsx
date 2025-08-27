@@ -159,10 +159,6 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <div className="flex space-x-4">
-                  <Button onClick={() => openTargetAudienceModal(service.id as 'detox-grupal' | 'detox-individual')}>¿Para quién es?</Button>
-                  <Button onClick={() => openFaqModal(service.id as 'detox-grupal' | 'detox-individual')}>Preguntas Frecuentes</Button>
-                </div>
                 <PaymentSection service={service} />
               </div>
               {/* Right Column */}
