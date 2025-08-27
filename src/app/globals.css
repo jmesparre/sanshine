@@ -156,3 +156,17 @@ tr.rdp-weekdays {
 th.rdp-weekday {
     padding-right: 17px;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 10px;
+  border: 2px solid var(--background);
+}

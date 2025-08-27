@@ -23,7 +23,7 @@ const Accordion = ({ items }: AccordionProps) => {
             onClick={() => toggleAccordion(index)}
             className="w-full text-sm cursor-pointer text-left p-4 flex justify-between items-center"
           >
-            <span>{item.title}</span>
+            <span>{String(item.title)}</span>
             <motion.div
               animate={{ rotate: openIndex === index ? 180 : 0 }}
               transition={{ duration: 0.3 }}
@@ -53,7 +53,7 @@ const Accordion = ({ items }: AccordionProps) => {
                 className="overflow-hidden"
               >
                 <div className="p-4 pt-1 text-sm text-gray-500">
-                  <p>{item.content}</p>
+                  <p>{String(item.content)}</p>
                 </div>
               </motion.div>
             )}

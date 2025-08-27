@@ -15,6 +15,7 @@ import TransferModal from "./TransferModal";
 import Modal from "@/components/Modal";
 import { modalContent } from "@/lib/modal-content";
 import TargetAudienceModalContent from "@/components/TargetAudienceModalContent";
+import FaqModalContent from "@/components/FaqModalContent";
 
 interface PaymentSectionProps {
   service: Service;
@@ -158,11 +159,8 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
         {modalType === "targetAudience" && serviceModalContent.targetAudience && (
           <TargetAudienceModalContent content={serviceModalContent.targetAudience} />
         )}
-        {modalType === "faq" && (
-          <>
-            <h2 className="text-2xl font-bold mb-4">Preguntas Frecuentes</h2>
-            <p>{serviceModalContent.faq}</p>
-          </>
+        {modalType === "faq" && serviceModalContent.faq && (
+          <FaqModalContent items={serviceModalContent.faq} />
         )}
       </Modal>
 

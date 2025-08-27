@@ -13,12 +13,25 @@ import ContactForm from "@/components/contact/ContactForm";
 import Modal from "@/components/Modal";
 import { modalContent } from "@/lib/modal-content";
 import TargetAudienceModalContent from "@/components/TargetAudienceModalContent";
+import FaqModalContent from "@/components/FaqModalContent";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTargetAudienceModalOpen, setIsTargetAudienceModalOpen] = useState(false);
+  const [isFaqModalOpen, setIsFaqModalOpen] = useState(false);
+  const [selectedServiceId, setSelectedServiceId] = useState<'detox-grupal' | 'detox-individual' | null>(null);
+
+  const openTargetAudienceModal = (serviceId: 'detox-grupal' | 'detox-individual') => {
+    setSelectedServiceId(serviceId);
+    setIsTargetAudienceModalOpen(true);
+  };
+
+  const openFaqModal = (serviceId: 'detox-grupal' | 'detox-individual') => {
+    setSelectedServiceId(serviceId);
+    setIsFaqModalOpen(true);
+  };
 
   const serviceImages: { [key: string]: string } = {
     'taller-ig': '/taller-ig.webp',
@@ -71,7 +84,7 @@ export default function Home() {
           <div>
             <p className="text-sm sm:text-lg mb-3 mt-5 sm:mt-3 ">Lic. Fernanda Sarro</p>
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-6">
-              Tu Salud Comienza en los Intestinos Hipócrates
+              Especialista en Nutrición Depurativa y Regenerativa
             </h1>
             <ul className="space-y-3 text-md italic mb-10 pt-2">
               <li><span className="text-primary">+</span> Taller de Inteligencia Gastro Intestinal</li>
@@ -95,11 +108,11 @@ export default function Home() {
         {/* Descripcion Section */}
         <section className="grid px-4 md:grid-cols-7 gap-16 items-start mb-32">
           {/* Left Column */}
-          <div className="md:col-span-2">
-            <h2 className="text-4xl  md:text-4xl lg:text-5xl font-semibold font-alegreya">Especialista en Nutrición Depurativa y Regenerativa</h2>
+          <div className="md:col-span-3">
+            <h2 className="text-4xl  md:text-4xl lg:text-5xl font-semibold font-alegreya">Tu Salud Comienza en los Intestinos Hipócrates</h2>
           </div>
           {/* Right Column */}
-          <div className="md:col-span-5 w-full">
+          <div className="md:col-span-4 w-full">
             <p className="text-lg leading-relaxed">
              <b>¿Por qué cuidar tu intestino y microbiota intestinal?</b> 
              <br />
@@ -146,6 +159,10 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+                <div className="flex space-x-4">
+                  <Button onClick={() => openTargetAudienceModal(service.id as 'detox-grupal' | 'detox-individual')}>¿Para quién es?</Button>
+                  <Button onClick={() => openFaqModal(service.id as 'detox-grupal' | 'detox-individual')}>Preguntas Frecuentes</Button>
+                </div>
                 <PaymentSection service={service} />
               </div>
               {/* Right Column */}
@@ -174,8 +191,11 @@ export default function Home() {
         )}
         <ContactForm />
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <TargetAudienceModalContent content={modalContent.targetAudience} />
+      <Modal isOpen={isTargetAudienceModalOpen} onClose={() => setIsTargetAudienceModalOpen(false)}>
+        {selectedServiceId && <TargetAudienceModalContent content={modalContent[selectedServiceId].targetAudience} />}
+      </Modal>
+      <Modal isOpen={isFaqModalOpen} onClose={() => setIsFaqModalOpen(false)}>
+        {selectedServiceId && <FaqModalContent items={modalContent[selectedServiceId].faq} />}
       </Modal>
     </main>
   );
