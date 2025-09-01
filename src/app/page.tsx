@@ -15,6 +15,7 @@ import { modalContent } from "@/lib/modal-content";
 import TargetAudienceModalContent from "@/components/TargetAudienceModalContent";
 import FaqModalContent from "@/components/FaqModalContent";
 import { Button } from "@/components/ui/button";
+import { Testimonials } from "@/components/testimonials/Testimonials";
 
 export default function Home() {
   const [services, setServices] = useState<Service[]>([]);
@@ -185,6 +186,7 @@ export default function Home() {
             </section>
           ))
         )}
+        <Testimonials />
         <ContactForm />
       </div>
       <Modal isOpen={isTargetAudienceModalOpen} onClose={() => setIsTargetAudienceModalOpen(false)}>

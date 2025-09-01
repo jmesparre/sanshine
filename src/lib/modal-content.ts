@@ -19,7 +19,8 @@ export const modalContent = {
         title: "No es para personas que:",
         list: [
           "Buscan una “solución mágica” en 3 días no están dispuestas a cambiar hábitos ni mirar hacia adentro",
-          "Solo quieren una dieta más sin hacer trabajo interno ni acompañamiento. Si estas en embaraza y lactando (consultame)",
+          "Solo quieren una dieta más sin hacer trabajo interno ni acompañamiento.",
+          "Si estas en embaraza y lactando (consultame)",
           "Estas transitando quimioterapia, polimedicad@, o fallas renales.",
         ],
       },
@@ -89,7 +90,8 @@ export const modalContent = {
             title: "No es para personas que:",
             list: [
               "Buscan una “solución mágica” en 3 días no están dispuestas a cambiar hábitos ni mirar hacia adentro",
-              "Solo quieren una dieta más sin hacer trabajo interno ni acompañamiento. Si estas en embaraza y lactando (consultame)",
+              "Solo quieren una dieta más sin hacer trabajo interno ni acompañamiento.",
+              "Si estas en embaraza y lactando (consultame)",
               "Estas transitando quimioterapia, polimedicad@, o fallas renales.",
             ],
           },
