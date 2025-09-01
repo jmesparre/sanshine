@@ -13,24 +13,29 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const testimonials = [
   {
-    name: "Ana Pérez",
-    testimonial: "\"El programa de Fernanda cambió mi vida. Aprendí a escuchar a mi cuerpo y a nutrirlo de verdad. ¡Me siento con más energía que nunca!\"",
-    avatar: "/placeholder-fernanda.png", 
+    name: "Andrea",
+    testimonial: "Wow, esto fue un viaje 🥹 pasé por todas las emociones: irritabilidad al dejar café y azúcar, crisis depurativas con náuseas, ansiedad por los cambios… pero hoy me siento increíble, con la mente despejada, energía renovada y sin los dolores articulares que me limitaban. Hasta mi rodilla lesionada mejoró con la alimentación antiinflamatoria.",
+    avatar: "/testimonio-andrea.jpg", 
   },
   {
-    name: "Carlos Gómez",
-    testimonial: "\"Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito,   el enfoque de Fernanda fue revelador.  el enfoque de Fernanda  el enfoque de Fernanda fue revelador. No se trata de restringir, sino de entender y sanar.  de años de probar dietas sin éxito, el enfoque de Fernanda fue revelador. No se trata de restringir, sino de entender y sanar. \"",
-    avatar: "/placeholder-fernanda.png",
+    name: "Karla",
+    testimonial: "Este detox me ayudó muchísimo a escuchar a mi cuerpo y tener esa conexión con lo que necesita. La intención fue clara, aprender lo que realmente requiere mi cuerpo y la verdad que muy bien logrado con tanta información tan rica! Me llevo muchísimo y seguiré aprendiendo 🙏✨🪄mil gracias muy lindo todoooo.",
+    avatar: "/testimonio-karla2.jpg",
   },
   {
-    name: "Luisa Fernández",
-    testimonial: "\"El Detox Solar fue un antes y un después. No solo mejoró mi digestión, sino también mi claridad mental y mi estado de ánimo.\"",
-    avatar: "/placeholder-fernanda.png",
+    name: "Flor",
+    testimonial: "Hola grupo! Hoy desayuné tortitas de almendra con aguacate y me nutrí de sus palabras 🥹. Este detox coincidió con mi microdosis 🍄 y depuré cuerpo, emociones y vínculos. Me desinflamé, bajé kilitos, volví a danza área, tuve más energía y creatividad en la cocina. Agradezco el sostén, la comunidad y todas las herramientas que recibimos.",
+    avatar: "/testimonio-flor.jpg",
+  },
+  {
+    name: "Rosa",
+    testimonial: "Yo si he sentido mejorías. Ya duermo un poco más. La piel de mi cara mejoró porque antes me salían unos granitos tipo rosácea y ya no. Mis glucosas también están mejorando...antes había días que me subía hasta 160. Hoy ya me tomo la lectura y me marca 105-- 120 en ese rango. Pero he aprendido mucho. Sobre todo a comer mejor y más sano.",
+    avatar: "/testimonio-Rosa.jpg",
   },
     {
-    name: "Javier Rodríguez",
-    testimonial: "\"Fernanda es una profesional increíble. Su acompañamiento cercano y su sabiduría hacen que todo el proceso sea fácil y transformador.\"",
-    avatar: "/placeholder-fernanda.png",
+    name: "Karla",
+    testimonial: "Me llevo una nueva forma de hacer mis comidas y hacerme cargo de mi alimentación. Esto fue clave: además de perder kilos que no necesitaba, ordené mis días y complementé el trabajo interno de meses limpiando viejos patrones. Ahora sé que es un estilo de vida donde respiración, conexión y amor a mi intestino son esenciales.",
+    avatar: "/testimonio-karla1.jpg",
   },
 ];
 
