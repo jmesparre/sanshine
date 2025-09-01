@@ -14,22 +14,22 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 const testimonials = [
   {
     name: "Ana Pérez",
-    testimonial: "El programa de Fernanda cambió mi vida. Aprendí a escuchar a mi cuerpo y a nutrirlo de verdad. ¡Me siento con más energía que nunca!",
+    testimonial: "\"El programa de Fernanda cambió mi vida. Aprendí a escuchar a mi cuerpo y a nutrirlo de verdad. ¡Me siento con más energía que nunca!\"",
     avatar: "/placeholder-fernanda.png", 
   },
   {
     name: "Carlos Gómez",
-    testimonial: "Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito,   el enfoque de Fernanda fue revelador.  el enfoque de Fernanda  el enfoque de Fernanda fue revelador. No se trata de restringir, sino de entender y sanar.  de años de probar dietas sin éxito, el enfoque de Fernanda fue revelador. No se trata de restringir, sino de entender y sanar. ",
+    testimonial: "\"Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito, Después de años de probar dietas sin éxito,   el enfoque de Fernanda fue revelador.  el enfoque de Fernanda  el enfoque de Fernanda fue revelador. No se trata de restringir, sino de entender y sanar.  de años de probar dietas sin éxito, el enfoque de Fernanda fue revelador. No se trata de restringir, sino de entender y sanar. \"",
     avatar: "/placeholder-fernanda.png",
   },
   {
     name: "Luisa Fernández",
-    testimonial: "El Detox Solar fue un antes y un después. No solo mejoró mi digestión, sino también mi claridad mental y mi estado de ánimo.",
+    testimonial: "\"El Detox Solar fue un antes y un después. No solo mejoró mi digestión, sino también mi claridad mental y mi estado de ánimo.\"",
     avatar: "/placeholder-fernanda.png",
   },
     {
     name: "Javier Rodríguez",
-    testimonial: "Fernanda es una profesional increíble. Su acompañamiento cercano y su sabiduría hacen que todo el proceso sea fácil y transformador.",
+    testimonial: "\"Fernanda es una profesional increíble. Su acompañamiento cercano y su sabiduría hacen que todo el proceso sea fácil y transformador.\"",
     avatar: "/placeholder-fernanda.png",
   },
 ];
@@ -60,7 +60,7 @@ export function Testimonials() {
                       </Avatar>
                       <p className="text-lg font-semibold">{item.name}</p>
                       <p className="mt-2 text-xs text-muted-foreground">
-                        "{item.testimonial}"
+                        {item.testimonial}
                       </p>
                     </CardContent>
                   </Card>

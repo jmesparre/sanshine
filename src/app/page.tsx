@@ -14,7 +14,6 @@ import Modal from "@/components/Modal";
 import { modalContent } from "@/lib/modal-content";
 import TargetAudienceModalContent from "@/components/TargetAudienceModalContent";
 import FaqModalContent from "@/components/FaqModalContent";
-import { Button } from "@/components/ui/button";
 import { Testimonials } from "@/components/testimonials/Testimonials";
 
 export default function Home() {
@@ -23,16 +22,6 @@ export default function Home() {
   const [isTargetAudienceModalOpen, setIsTargetAudienceModalOpen] = useState(false);
   const [isFaqModalOpen, setIsFaqModalOpen] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState<'detox-grupal' | 'detox-individual' | null>(null);
-
-  const openTargetAudienceModal = (serviceId: 'detox-grupal' | 'detox-individual') => {
-    setSelectedServiceId(serviceId);
-    setIsTargetAudienceModalOpen(true);
-  };
-
-  const openFaqModal = (serviceId: 'detox-grupal' | 'detox-individual') => {
-    setSelectedServiceId(serviceId);
-    setIsFaqModalOpen(true);
-  };
 
   const serviceImages: { [key: string]: string } = {
     'taller-ig': '/taller-ig.webp',
@@ -85,7 +74,7 @@ export default function Home() {
           <div>
             <p className="text-sm sm:text-lg mb-3 mt-5 sm:mt-3 ">Lic. Fernanda Sarro</p>
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-6">
-              Especialista en Nutrición Depurativa y Regenerativa
+              Especialista en Nutrición Depurativa y Funcional
             </h1>
             <ul className="space-y-3 text-md italic mb-10 pt-2">
               <li><span className="text-primary">+</span> Taller de Inteligencia Gastro Intestinal</li>

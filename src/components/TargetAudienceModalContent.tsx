@@ -1,9 +1,5 @@
 import { CircleCheckBig, CircleX } from 'lucide-react';
 
-interface ListItem {
-  text: string;
-}
-
 interface Section {
   title: string;
   list: string[];
