@@ -31,6 +31,9 @@ export function useDashboardData() {
   }, []);
 
   const filteredOrders = orders.filter((order) => {
+    if (!order.createdAt) {
+      return false;
+    }
     const orderDate = order.createdAt.toDate();
     if (startDate && startDate > orderDate) {
       return false;
@@ -72,7 +75,7 @@ export function useDashboardData() {
     }, {} as { [key: string]: { count: number } });
 
   const salesLast7Days = filteredOrders
-    .filter((order) => order.status === 'paid')
+    .filter((order) => order.status === 'paid' && order.createdAt)
     .reduce((acc, order) => {
       const date = order.createdAt
         .toDate()
