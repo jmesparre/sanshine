@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <main className="">
-      <div className="px-9 py-0">
+      <div className="px-3 sm:px-9 py-0">
         {/* Hero Section */}
         <section className="grid pt-5 px-4 md:grid-cols-2 gap-1 items-center mb-32">
           {/* Left Column */}
@@ -77,10 +77,11 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-6">
               Especialista en Nutrición Depurativa y Funcional
             </h1>
-            <ul className="space-y-3 text-md italic mb-10 pt-2">
+            <ul className="space-y-3 text-sm italic mb-10 pt-2">
               <li><span className="text-primary">+</span> Taller de Inteligencia Gastro Intestinal</li>
               <li><span className="text-primary">+</span> Detox Solar Grupal</li>
               <li><span className="text-primary">+</span> Detox Solar Indiviudal</li>
+              <li><span className="text-primary">+</span> Plan de Alimentación Antiinflamatorio</li>
             </ul>
           </div>
           {/* Right Column */}

@@ -12,7 +12,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full px-9 relative z-50">
+    <header className="w-full px-9 fixed bg-background z-50">
       {/* Top Bar */}
       <div className="flex justify-between items-center py-4 border-b border-black">
         <div className="text-2xl font-bold tracking-wider">
