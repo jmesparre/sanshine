@@ -30,7 +30,7 @@ const testimonials = [
   {
     name: "Rosa",
     testimonial: "Yo si he sentido mejorías. Ya duermo un poco más. La piel de mi cara mejoró porque antes me salían unos granitos tipo rosácea y ya no. Mis glucosas también están mejorando...antes había días que me subía hasta 160. Hoy ya me tomo la lectura y me marca 105-- 120 en ese rango. Pero he aprendido mucho. Sobre todo a comer mejor y más sano.",
-    avatar: "/testimonio-Rosa.jpg",
+    avatar: "/testimonio-rosa.jpg",
   },
     {
     name: "Karla",

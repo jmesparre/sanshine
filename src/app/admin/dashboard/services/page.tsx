@@ -14,9 +14,10 @@ import { useToast } from '@/hooks/use-toast';
 import { PlusCircle, Trash2 } from 'lucide-react';
 
 const servicesToEdit = [
-  { id: 'taller-ig', name: 'Taller de Inteligencia Gastro Intestinal' },
-  { id: 'detox-grupal', name: 'Detox Solar Grupal' },
-  { id: 'detox-individual', name: 'Detox Solar Individual' },
+  { id: 'taller-ig', name: 'Servicio 1' },
+  { id: 'detox-grupal', name: 'Servicio 2' },
+  { id: 'detox-individual', name: 'Servicio 3' },
+  { id: 'plan-antiinflamatorio', name: 'Servicio 4' },
 ];
 
 const ServicesPage = () => {

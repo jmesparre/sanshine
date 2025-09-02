@@ -27,6 +27,7 @@ export default function Home() {
     'taller-ig': '/taller-ig.webp',
     'detox-grupal': '/detox-grupal.webp',
     'detox-individual': '/detox-individual.webp',
+    'plan-antiinflamatorio': '/plan-antiiflamatorio.png',
   };
 
   useEffect(() => {

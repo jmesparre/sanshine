@@ -77,7 +77,7 @@ const ContactForm = () => {
                 Estoy aquí para ayudarte, mándame un mensaje con tu consulta.
               </p>
               <p className="text-gray-700 mb-8">
-                xxxxxxx
+                ------
               </p>
               <div className="space-y-4 text-md pt-5">
                 <a href="https://www.instagram.com/fernanda.sarro/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors">
