@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <main className="">
-      <div className="px-3 sm:px-9 py-0">
+      <div className="px-3 sm:px-9 py-20">
         {/* Hero Section */}
         <section className="grid pt-5 px-4 md:grid-cols-2 gap-1 items-center mb-32">
           {/* Left Column */}
