@@ -26,6 +26,7 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
+      external_reference: id,
       back_urls: {
         success: `${req.nextUrl.origin}/pago-exitoso`,
         failure: `${req.nextUrl.origin}/pago-fallido`,
