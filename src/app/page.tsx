@@ -87,7 +87,7 @@ export default function Home() {
           {/* Right Column */}
           <div className="relative ">
             <Image
-              src="/placeholder-fernanda.png" 
+              src="/placeholder-fernanda.webp" 
               alt="Fernanda Sarro"
               width={600}
               height={600}
