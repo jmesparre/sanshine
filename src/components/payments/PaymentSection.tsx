@@ -114,7 +114,7 @@ export default function PaymentSection({ service }: PaymentSectionProps) {
           switch (selectedCurrency.code) {
             case 'USD':
             case 'EUR':
-              return <PaypalPagoButton amount={selectedPrice.toString() || '0'} currency={selectedCurrency.code} serviceName={service.leftColumn.title} />;
+              return <PaypalPagoButton amount={selectedPrice.toString() || '0'} currency={selectedCurrency.code} serviceName={service.leftColumn.title} service={service} />;
             case 'MXN': 
               return <TransferButton onClick={handleTransferClick} price={{amount: selectedPrice, currency: 'MXN'}} method={{name: 'Transferencia Bancaria', icon: '/mex-flag.png'}} />;
             case 'ARS':

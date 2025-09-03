@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { Service } from "@/types";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface PaymentButtonProps {
   price: { amount: number; currency: string };
@@ -27,36 +29,49 @@ export default function PaymentButton({
 
   const handlePayment = async () => {
     const paymentAction = async () => {
-      if (method.name === "Mercado Pago") {
-        setIsLoading(true);
-        try {
-          const response = await fetch("/api/create-payment", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              id: service.id,
-              title: service.leftColumn.title,
-              unit_price: price.amount,
-              currency_id: price.currency,
-            }),
-          });
+      if (!user) return;
+      setIsLoading(true);
 
-          if (!response.ok) {
-            throw new Error("Failed to create payment preference");
-          }
+      try {
+        // 1. Create order in Firestore
+        const orderRef = await addDoc(collection(db, "orders"), {
+          userId: user.uid,
+          userName: user.displayName || 'No Name',
+          userEmail: user.email || 'No Email',
+          serviceId: service.id,
+          serviceName: service.leftColumn.title,
+          amount: price.amount,
+          currency: price.currency,
+          status: "pending",
+          paymentMethod: "mercadopago",
+          createdAt: serverTimestamp(),
+        });
 
-          const data = await response.json();
-          window.location.href = data.init_point;
-        } catch (error) {
-          console.error(error);
-          alert("Error al procesar el pago. Por favor, intenta de nuevo.");
-          setIsLoading(false);
+        // 2. Create payment preference in Mercado Pago
+        const response = await fetch("/api/create-payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: orderRef.id, // Use Firestore order ID as external_reference
+            title: service.leftColumn.title,
+            unit_price: price.amount,
+            currency_id: price.currency,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to create payment preference");
         }
-      } else {
-        // Handle other payment methods
-        console.log("Proceeding to payment with:", method.name);
+
+        const data = await response.json();
+        window.location.href = data.init_point;
+
+      } catch (error) {
+        console.error(error);
+        alert("Error al procesar el pago. Por favor, intenta de nuevo.");
+        setIsLoading(false);
       }
     };
 

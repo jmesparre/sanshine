@@ -10,18 +10,11 @@ import Accordion from "@/components/ui/Accordion";
 import Spinner from "@/components/ui/Spinner";
 import DynamicIcon from "@/components/ui/DynamicIcon";
 import ContactForm from "@/components/contact/ContactForm";
-import Modal from "@/components/Modal";
-import { modalContent } from "@/lib/modal-content";
-import TargetAudienceModalContent from "@/components/TargetAudienceModalContent";
-import FaqModalContent from "@/components/FaqModalContent";
 import { Testimonials } from "@/components/testimonials/Testimonials";
 
 export default function Home() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isTargetAudienceModalOpen, setIsTargetAudienceModalOpen] = useState(false);
-  const [isFaqModalOpen, setIsFaqModalOpen] = useState(false);
-  const [selectedServiceId, setSelectedServiceId] = useState<'detox-grupal' | 'detox-individual' | null>(null);
 
   const serviceImages: { [key: string]: string } = {
     'taller-ig': '/taller-ig.webp',
@@ -180,12 +173,6 @@ export default function Home() {
         <Testimonials />
         <ContactForm />
       </div>
-      <Modal isOpen={isTargetAudienceModalOpen} onClose={() => setIsTargetAudienceModalOpen(false)}>
-        {selectedServiceId && <TargetAudienceModalContent content={modalContent[selectedServiceId].targetAudience} />}
-      </Modal>
-      <Modal isOpen={isFaqModalOpen} onClose={() => setIsFaqModalOpen(false)}>
-        {selectedServiceId && <FaqModalContent items={modalContent[selectedServiceId].faq} />}
-      </Modal>
     </main>
   );
 }
