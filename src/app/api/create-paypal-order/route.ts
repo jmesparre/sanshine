@@ -2,13 +2,16 @@ import { NextResponse } from 'next/server';
 
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
+const PAYPAL_API_BASE = process.env.NODE_ENV === 'production' 
+  ? 'https://api.paypal.com' 
+  : 'https://api.sandbox.paypal.com';
 
 async function getPayPalAccessToken() {
   if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
     throw new Error('PayPal client ID or secret is not configured.');
   }
   const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_CLIENT_SECRET}`).toString('base64');
-  const response = await fetch('https://api.paypal.com/v1/oauth2/token', {
+  const response = await fetch(`${PAYPAL_API_BASE}/v1/oauth2/token`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -25,7 +28,7 @@ export async function POST(request: Request) {
     const { orderId, serviceName, amount, currency } = await request.json();
     const accessToken = await getPayPalAccessToken();
 
-    const response = await fetch('https://api.paypal.com/v2/checkout/orders', {
+    const response = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

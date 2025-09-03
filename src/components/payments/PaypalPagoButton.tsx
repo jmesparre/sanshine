@@ -60,6 +60,7 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
     });
 
     const order = await response.json();
+    console.log("Created PayPal Order:", order);
     return order.id;
   };
 
