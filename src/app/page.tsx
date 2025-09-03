@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <main className="">
-      <div className="px-3 sm:px-9 py-20">
+      <div className="px-3 sm:px-9">
         {/* Hero Section */}
         <section className="grid pt-5 px-4 md:grid-cols-2 gap-1 items-center mb-32">
           {/* Left Column */}
@@ -77,7 +77,7 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-6">
               Especialista en Nutrición Depurativa y Funcional
             </h1>
-            <ul className="space-y-3 text-sm italic mb-10 pt-2">
+            <ul className="space-y-3 text-sm italic mb-10">
               <li><span className="text-primary">+</span> Taller de Inteligencia Gastro Intestinal</li>
               <li><span className="text-primary">+</span> Detox Solar Grupal</li>
               <li><span className="text-primary">+</span> Detox Solar Indiviudal</li>
@@ -121,7 +121,7 @@ export default function Home() {
         </section>
  
         
-        <hr className="pb-15 border-black"/>
+        <hr className="pb-15 border-black mr-0 ml-4 sm:mr-4 sm:ml-4"/>
 
         {/* Services Sections */}
         {loading ? (
@@ -173,7 +173,7 @@ export default function Home() {
                 )}
               </div>
               </div>
-              <hr className="pb-20 border-black" />
+              <hr className="pb-15 border-black mr-0 ml-4 sm:mr-4 sm:ml-4"/>
             </section>
           ))
         )}

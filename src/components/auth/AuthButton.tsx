@@ -22,7 +22,7 @@ const AuthButton = () => {
   }
 
   return (
-    <Button variant="outline" className="font-light hover:font-normal border-gray-600" onClick={() => promptLogin()}>
+    <Button variant="outline" className="font-light text-xs sm:text-md hover:font-normal border-gray-600" onClick={() => promptLogin()}>
       Iniciar Sesión
     </Button>
   );
