@@ -20,7 +20,7 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
   const { user, promptLogin } = useAuth();
 
   const paypalOptions = {
-    clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID?.trim() || "test",
+    clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID?.replace(/\s/g, "") || "test",
     currency: currency,
     intent: "capture",
   };
