@@ -3,11 +3,11 @@ import type { NextRequest } from 'next/server';
 import { db } from '@/lib/firebase-admin';
 import { MercadoPagoConfig, Payment } from 'mercadopago';
 
-const accessToken = process.env.MP_ACCESS_TOKEN;
+const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
 
 if (!accessToken) {
-  console.error('MP_ACCESS_TOKEN is not defined');
-  throw new Error('MP_ACCESS_TOKEN is not defined');
+  console.error('MERCADOPAGO_ACCESS_TOKEN is not defined');
+  throw new Error('MERCADOPAGO_ACCESS_TOKEN is not defined');
 }
 
 const client = new MercadoPagoConfig({ accessToken });
