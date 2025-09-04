@@ -51,10 +51,17 @@ export async function POST(request: Request) {
     });
 
     const order = await response.json();
+
+    if (!response.ok) {
+      console.error('PayPal API Error:', order);
+      throw new Error(`PayPal API Error: ${order.message || 'Unknown error'}`);
+    }
+
     return NextResponse.json({ id: order.id });
 
   } catch (error) {
     console.error('Failed to create PayPal order:', error);
-    return NextResponse.json({ error: 'Failed to create PayPal order.' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    return NextResponse.json({ error: 'Failed to create PayPal order.', details: errorMessage }, { status: 500 });
   }
 }

@@ -25,10 +25,19 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
     intent: "capture",
   };
 
-  const createOrder = async () => {
+  const onClick = (data: Record<string, unknown>, actions: any) => {
     if (!user) {
       promptLogin();
-      throw new Error("User not logged in");
+      return actions.reject();
+    }
+    return actions.resolve();
+  };
+
+  const createOrder = async () => {
+    if (!user) {
+      // This should not happen due to the onClick check, but as a fallback
+      console.error("User not logged in at createOrder");
+      return "";
     }
 
     // 1. Create order in Firestore
@@ -93,6 +102,7 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
     <PayPalScriptProvider options={paypalOptions}>
       <PayPalButtons
         style={{ layout: "vertical" }}
+        onClick={onClick}
         createOrder={createOrder}
         onApprove={onApprove}
         onError={onError}
