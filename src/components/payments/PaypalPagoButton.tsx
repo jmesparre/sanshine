@@ -46,22 +46,33 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
     });
 
     // 2. Create PayPal order
-    const response = await fetch("/api/create-paypal-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        orderId: orderRef.id,
-        serviceName,
-        amount,
-        currency,
-      }),
-    });
+    try {
+      const response = await fetch("/api/create-paypal-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          orderId: orderRef.id,
+          serviceName,
+          amount,
+          currency,
+        }),
+      });
 
-    const order = await response.json();
-    console.log("Created PayPal Order:", order);
-    return order.id;
+      if (!response.ok) {
+        const errorDetails = await response.json();
+        throw new Error(`API Error: ${errorDetails.error || response.statusText}`);
+      }
+
+      const order = await response.json();
+      console.log("Created PayPal Order:", order);
+      return order.id;
+    } catch (error) {
+      console.error("Failed to create PayPal order:", error);
+      // Re-throw the error to be caught by PayPal's onError
+      throw error;
+    }
   };
 
   const onApprove = (data: OnApproveData, actions: OnApproveActions) => {
