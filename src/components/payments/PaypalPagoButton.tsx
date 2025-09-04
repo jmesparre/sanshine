@@ -1,7 +1,7 @@
 "use client";
 
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import type { OnApproveData, OnApproveActions } from "@paypal/paypal-js";
+import type { OnApproveData, OnApproveActions, OnClickActions } from "@paypal/paypal-js";
 import { useRouter } from 'next/navigation';
 import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
@@ -25,7 +25,7 @@ const PaypalPagoButton: React.FC<PaypalPagoButtonProps> = ({ amount, currency, s
     intent: "capture",
   };
 
-  const onClick = (data: Record<string, unknown>, actions: any) => {
+  const onClick = (data: Record<string, unknown>, actions: OnClickActions) => {
     if (!user) {
       promptLogin();
       return actions.reject();

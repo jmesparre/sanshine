@@ -3,17 +3,14 @@ import type { NextRequest } from 'next/server';
 import { db } from '@/lib/firebase-admin';
 import { MercadoPagoConfig, Payment } from 'mercadopago';
 
-const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
-
-if (!accessToken) {
-  console.error('MERCADOPAGO_ACCESS_TOKEN is not defined');
-  throw new Error('MERCADOPAGO_ACCESS_TOKEN is not defined');
-}
-
-const client = new MercadoPagoConfig({ accessToken });
-
 export async function POST(request: NextRequest) {
   try {
+    const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
+    if (!accessToken) {
+      throw new Error('MERCADOPAGO_ACCESS_TOKEN is not defined');
+    }
+    const client = new MercadoPagoConfig({ accessToken });
+
     const body = await request.json();
     console.log('Mercado Pago Webhook received:', body);
 
