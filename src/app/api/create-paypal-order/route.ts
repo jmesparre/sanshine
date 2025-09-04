@@ -28,6 +28,9 @@ export async function POST(request: Request) {
     const { orderId, serviceName, amount, currency } = await request.json();
     const accessToken = await getPayPalAccessToken();
 
+    // Ensure the amount is a string with two decimal places
+    const formattedAmount = parseFloat(amount).toFixed(2);
+
     const response = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders`, {
       method: 'POST',
       headers: {
@@ -41,7 +44,7 @@ export async function POST(request: Request) {
           description: serviceName,
           amount: {
             currency_code: currency,
-            value: amount,
+            value: formattedAmount,
           },
         }],
       }),
