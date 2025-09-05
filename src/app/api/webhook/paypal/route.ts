@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { db } from '@/lib/firebase-admin';
+import { sendConfirmationEmail } from '@/lib/email-helper';
 
 const PAYPAL_WEBHOOK_ID = process.env.PAYPAL_WEBHOOK_ID;
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
@@ -78,7 +79,7 @@ export async function POST(request: NextRequest) {
         await orderRef.update({ status: 'paid' });
         console.log(`Order ${orderId} updated to paid.`);
         
-        // TODO: Trigger confirmation email
+        await sendConfirmationEmail(orderId);
       }
     }
 

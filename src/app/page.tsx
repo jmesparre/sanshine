@@ -66,15 +66,15 @@ export default function Home() {
         <section className="grid pt-5 px-4 md:grid-cols-2 gap-1 items-center mb-32">
           {/* Left Column */}
           <div>
-            <p className="text-sm sm:text-lg mb-3 mt-5 sm:mt-3 ">Lic. Fernanda Sarro</p>
+            <p className="text-sm sm:text-lg mb-3 mt-5 sm:mt-3 border-b-2 border-primary w-fit">Lic. Fernanda Sarro</p>
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-6">
               Especialista en Nutrición Depurativa y Funcional
             </h1>
             <ul className="space-y-3 text-sm italic mb-10">
               <li><span className="text-primary">+</span> Taller de Inteligencia Gastro Intestinal</li>
+              <li><span className="text-primary">+</span> Plan de Alimentación Antiinflamatorio</li>
               <li><span className="text-primary">+</span> Detox Solar Grupal</li>
               <li><span className="text-primary">+</span> Detox Solar Indiviudal</li>
-              <li><span className="text-primary">+</span> Plan de Alimentación Antiinflamatorio</li>
             </ul>
           </div>
           {/* Right Column */}

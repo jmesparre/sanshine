@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     }
 
     const { error } = await resend.emails.send({
-      from: 'Plataforma Fernanda Sarro <noreply@resend.dev>',
+      from: 'Plataforma Fernanda Sarro <noreply@nutricionsanshine.com>',
       to: [contactEmail],
       subject: `Nuevo mensaje de contacto de ${name}`,
       html: `

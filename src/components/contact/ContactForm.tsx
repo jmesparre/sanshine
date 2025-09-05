@@ -74,11 +74,9 @@ const ContactForm = () => {
             <div className='w-5/6'>
               <h2 className="text-5xl font-bold text-gray-800 mb-4 pt-20 pb-5 font-serif">Pongámonos en contacto</h2>
               <p className="text-gray-700 mb-4 ">
-                Pongámonos en contacto.
+                Si tienes alguna duda, escríbeme.
               </p>
-              <p className="text-gray-700 mb-8">
-                ------
-              </p>
+             
               <div className="space-y-4 text-md pt-5">
                 <a href="https://www.instagram.com/fernanda.sarro/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors">
                   <Instagram size={24} className="text-gray-500" />

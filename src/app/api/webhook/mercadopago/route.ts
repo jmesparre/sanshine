@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { db } from '@/lib/firebase-admin';
 import { MercadoPagoConfig, Payment } from 'mercadopago';
+import { sendConfirmationEmail } from '@/lib/email-helper';
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,7 +29,7 @@ export async function POST(request: NextRequest) {
           await orderRef.update({ status: 'paid' });
           console.log(`Order ${orderId} updated to paid.`);
 
-          // TODO: Trigger confirmation email
+          await sendConfirmationEmail(orderId);
         }
       }
     }

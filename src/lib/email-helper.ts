@@ -1,0 +1,49 @@
+import { Resend } from 'resend';
+import { Order } from '@/types';
+import { db } from '@/lib/firebase-admin';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export async function sendConfirmationEmail(orderId: string) {
+  if (!db) {
+    throw new Error('Firebase Admin SDK not initialized');
+  }
+
+  const orderRef = db.collection('orders').doc(orderId);
+  const orderDoc = await orderRef.get();
+
+  if (!orderDoc.exists) {
+    throw new Error(`Order with ID ${orderId} not found`);
+  }
+
+  const order = orderDoc.data() as Order;
+
+  if (!order.userId) {
+    throw new Error(`Order with ID ${orderId} is missing a userId`);
+  }
+
+  const userRef = db.collection('users').doc(order.userId);
+  const userDoc = await userRef.get();
+
+  if (!userDoc.exists) {
+    throw new Error(`User with ID ${order.userId} not found`);
+  }
+
+  const userData = userDoc.data();
+  const userEmail = userData?.email;
+
+  if (!userEmail) {
+    throw new Error(`User with ID ${order.userId} does not have an email`);
+  }
+
+  await resend.emails.send({
+    from: 'Plataforma Fernanda Sarro <noreply@nutricionsanshine.com>',
+    to: userEmail,
+    subject: `Confirmación de tu orden para ${order.serviceName}`,
+    html: `<h1>¡Gracias por tu compra, ${order.userName}!</h1>
+           <p>Hemos confirmado el pago para tu servicio: ${order.serviceName}.</p>
+           <p>Pronto nos pondremos en contacto contigo con más detalles.</p>`,
+  });
+
+  console.log(`Confirmation email sent successfully for order ${orderId}`);
+}
