@@ -74,7 +74,7 @@ const ContactForm = () => {
             <div className='w-5/6'>
               <h2 className="text-5xl font-bold text-gray-800 mb-4 pt-20 pb-5 font-serif">Pongámonos en contacto</h2>
               <p className="text-gray-700 mb-4 ">
-                Estoy aquí para ayudarte, mándame un mensaje con tu consulta.
+                Pongámonos en contacto.
               </p>
               <p className="text-gray-700 mb-8">
                 ------

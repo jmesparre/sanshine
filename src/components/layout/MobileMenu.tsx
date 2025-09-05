@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import AuthButton from "../auth/AuthButton";
+import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 const NavLink = ({ href, number, children }: { href: string; number: string; children: React.ReactNode }) => {
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -25,21 +26,25 @@ const NavLink = ({ href, number, children }: { href: string; number: string; chi
     );
 };
 
-const MobileMenu = ({ isOpen }: { isOpen: boolean }) => {
+const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+    const ref = useOutsideClick(onClose);
+
     return (
         <AnimatePresence>
             {isOpen && (
                 <motion.div
+                    ref={ref}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.1 }}
                     className="absolute top-full right-0 mt-2 bg-background border border-black mr-5 dark:bg-gray-800 rounded-md shadow-lg"
                 >
                     <nav className="flex flex-col space-y-4 px-8 py-8  text-md">
                         <NavLink href="#taller-ig" number="01">Taller de Inteligencia Gastro Intestinal</NavLink>
-                        <NavLink href="#detox-grupal" number="02">Detox Solar Grupal</NavLink>
-                        <NavLink href="#detox-individual" number="03">Detox Solar Individual</NavLink>
+                        <NavLink href="#plan-antiinflamatorio" number="02">Plan de Alimentación Antiinflamatorio</NavLink>
+                        <NavLink href="#detox-grupal" number="03">Detox Solar Grupal</NavLink>
+                        <NavLink href="#detox-individual" number="04">Detox Solar Individual</NavLink>
                         <div className="border-t border-black pt-4">
                             <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900">
                                 Contactame

@@ -94,7 +94,7 @@ export default function Home() {
         <section className="grid px-4 md:grid-cols-7 gap-16 items-start mb-32">
           {/* Left Column */}
           <div className="md:col-span-3">
-            <h2 className="text-4xl  md:text-4xl lg:text-5xl font-semibold font-alegreya">Tu Salud Comienza en los Intestinos Hipócrates</h2>
+            <h2 className="text-4xl  md:text-4xl lg:text-5xl font-semibold font-alegreya">Tu Salud Comienza en los Intestinos -<span className="text-4xl">"Hipócrates"</span></h2>
           </div>
           {/* Right Column */}
           <div className="md:col-span-4 w-full">

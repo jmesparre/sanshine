@@ -87,6 +87,17 @@ const ServicesPage = () => {
     );
   };
 
+  const handleOrderChange = (serviceId: string, value: string) => {
+    setServices(prevServices =>
+      prevServices.map(service => {
+        if (service.id === serviceId) {
+          return { ...service, order: parseInt(value, 10) || 0 };
+        }
+        return service;
+      })
+    );
+  };
+
   const handleBulletPointChange = (serviceId: string, index: number, field: 'text' | 'icon', value: string) => {
     setServices(prevServices =>
       prevServices.map(service => {
@@ -270,6 +281,15 @@ const ServicesPage = () => {
                             id="title"
                             value={activeService.leftColumn.title}
                             onChange={e => handleInputChange(activeService.id, 'leftColumn', 'title', e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="order">Orden</Label>
+                          <Input
+                            id="order"
+                            type="number"
+                            value={activeService.order}
+                            onChange={e => handleOrderChange(activeService.id, e.target.value)}
                           />
                         </div>
                         <div>
