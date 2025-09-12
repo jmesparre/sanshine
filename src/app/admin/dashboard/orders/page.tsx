@@ -1,17 +1,37 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { collection, onSnapshot, query, orderBy, doc, updateDoc } from 'firebase/firestore';
+import { collection, onSnapshot, query, orderBy, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Order } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import { MoreHorizontal } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState<Order[]>([]);
+  const [orderToDelete, setOrderToDelete] = useState<Order | null>(null);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -27,6 +47,23 @@ const OrdersPage = () => {
       default:
         return status;
     }
+  };
+
+  const handleDeleteOrder = async (orderId: string) => {
+    const orderRef = doc(db, 'orders', orderId);
+    try {
+      await deleteDoc(orderRef);
+      console.log(`Order ${orderId} deleted`);
+    } catch (error) {
+      console.error('Error deleting order: ', error);
+    }
+    setIsDeleteDialogOpen(false);
+    setOrderToDelete(null);
+  };
+
+  const openDeleteDialog = (order: Order) => {
+    setOrderToDelete(order);
+    setIsDeleteDialogOpen(true);
   };
 
   const filteredOrders = orders.filter((order) => {
@@ -118,7 +155,7 @@ const OrdersPage = () => {
                 <TableHead>Fecha</TableHead>
                 <TableHead>Monto</TableHead>
                 <TableHead>Estado</TableHead>
-                <TableHead>Acciones</TableHead>
+                <TableHead className="text-right">Acciones</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -147,22 +184,29 @@ const OrdersPage = () => {
                       {translateStatus(order.status)}
                     </Badge>
                   </TableCell>
-                  <TableCell>
-                    <Select
-                      value={order.status}
-                      onValueChange={(value: string) =>
-                        handleStatusChange(order, value as 'pending' | 'paid' | 'cancelled')
-                      }
-                    >
-                      <SelectTrigger className="w-[120px]">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="pending">Pendiente</SelectItem>
-                        <SelectItem value="paid">Pagada</SelectItem>
-                        <SelectItem value="cancelled">Cancelada</SelectItem>
-                      </SelectContent>
-                    </Select>
+                  <TableCell className="text-right">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                          <span className="sr-only">Open menu</span>
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={() => handleStatusChange(order, 'pending')}>
+                          Marcar como Pendiente
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => handleStatusChange(order, 'paid')}>
+                          Marcar como Pagada
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => handleStatusChange(order, 'cancelled')}>
+                          Marcar como Cancelada
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => openDeleteDialog(order)}>
+                          Borrar
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </TableCell>
                 </TableRow>
               ))}
@@ -170,6 +214,23 @@ const OrdersPage = () => {
           </Table>
         </CardContent>
       </Card>
+      <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>¿Estás seguro de que quieres borrar esta orden?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Esta acción no se puede deshacer. Esto borrará permanentemente la orden de la base de
+              datos.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setOrderToDelete(null)}>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={() => orderToDelete && handleDeleteOrder(orderToDelete.id)}>
+              Borrar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

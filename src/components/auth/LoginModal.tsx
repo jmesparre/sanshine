@@ -17,14 +17,14 @@ export const LoginModal = () => {
     <Dialog open={isLoginModalOpen} onOpenChange={closeLoginModal}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Login</DialogTitle>
+          <DialogTitle>Hola un gusto recibirte</DialogTitle>
           <DialogDescription>
-            Inicia sesión para continuar.
+            Inicia sesión para registrar tu pago.
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-6">
           <Button variant="outline" className="w-full" onClick={signInWithGoogle}>
-            Login with Google
+            Iniciar sesión con Google
           </Button>
         </div>
       </DialogContent>

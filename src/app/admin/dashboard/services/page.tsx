@@ -20,6 +20,8 @@ const servicesToEdit = [
   { id: 'plan-antiinflamatorio', name: 'Servicio 4' },
 ];
 
+const currencyOrder = ['USD', 'EUR', 'ARS', 'MXN'];
+
 const ServicesPage = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
@@ -294,12 +296,12 @@ const ServicesPage = () => {
                         </div>
                         <div>
                           <Label>Precios</Label>
-                          {Object.entries(activeService.leftColumn.prices).map(([currency, price]) => (
+                          {currencyOrder.map(currency => (
                             <div key={currency} className="flex items-center mt-2">
                               <span className="w-12 text-muted-foreground">{currency}</span>
                               <Input
                                 type="number"
-                                value={price}
+                                value={activeService.leftColumn.prices[currency as keyof typeof activeService.leftColumn.prices] || ''}
                                 onChange={e => handlePriceChange(activeService.id, currency, e.target.value)}
                               />
                             </div>
