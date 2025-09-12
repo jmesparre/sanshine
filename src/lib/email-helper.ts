@@ -47,7 +47,8 @@ export async function sendConfirmationEmail(orderId: string) {
            <p>Pais:</p>
            <p>WhatsApp: Con la característica del país correspondiente.</p>
            <p>NY si tenes análisis Clinicos recientes ( menor a 6 meses).</p>
-           <p>Muchas Gracias Licenciada Fernanda Sarro Nutricion Depurativa y Funcional.</p>`,
+           <p>Muchas Gracias.</p>
+           <p>Licenciada Fernanda Sarro Nutricion Depurativa y Funcional.</p>`,
   });
 
   console.log(`Confirmation email sent successfully for order ${orderId}`);
