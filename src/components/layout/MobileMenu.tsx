@@ -1,11 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import AuthButton from "../auth/AuthButton";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 
-const NavLink = ({ href, number, children }: { href: string; number: string; children: React.ReactNode }) => {
+const NavLink = ({ href, number, children, className }: { href: string; number?: string; children: React.ReactNode; className?: string }) => {
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
         const targetId = href.substring(1);
@@ -19,9 +18,9 @@ const NavLink = ({ href, number, children }: { href: string; number: string; chi
     };
 
     return (
-        <a href={href} onClick={handleClick} className="text-gray-600 hover:text-gray-900 transition-colors duration-300 flex items-center space-x-2">
+        <a href={href} onClick={handleClick} className={className || "text-gray-600 hover:text-gray-900 transition-colors duration-300 flex items-center space-x-2"}>
             <span>{children}</span>
-            <span className="text-xs text-gray-400">{number}</span>
+            {number && <span className="text-xs text-gray-400">{number}</span>}
         </a>
     );
 };
