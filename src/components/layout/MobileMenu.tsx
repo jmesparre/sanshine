@@ -46,9 +46,9 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                         <NavLink href="#detox-grupal" number="03">Detox Solar Grupal</NavLink>
                         <NavLink href="#detox-individual" number="04">Detox Solar Individual</NavLink>
                         <div className="border-t border-black pt-4">
-                            <Link href="/contacto" className="text-sm text-gray-600 hover:text-gray-900">
+                            <NavLink href="#contacto" className="text-sm text-gray-600 hover:text-gray-900">
                                 Contactame
-                            </Link>
+                            </NavLink>
                             <div className="mt-4">
                                 <AuthButton />
                             </div>

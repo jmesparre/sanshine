@@ -54,7 +54,7 @@ export const modalContent = {
       },
       {
         title: "¿Puedo hacer ejercicio durante el detox solar?",
-        content: "Sí, pero lo ideal es optar por movimientos  massuaves: esto depende cada cuerpo, si siempre te moviste es problable que continues haciendolo.No se trata de forzar el cuerpo, sino de acompañarlo y escucharlo.",
+        content: "Sí, pero lo ideal es optar por movimientos mas suaves: esto depende cada cuerpo, si siempre te moviste es problable que continues haciendolo.No se trata de forzar el cuerpo, sino de acompañarlo y escucharlo.",
       },
       {
         title: "¿Qué pasa si no tengo vesícula o tengo problemas digestivos?",

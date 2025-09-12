@@ -40,9 +40,14 @@ export async function sendConfirmationEmail(orderId: string) {
     from: 'Plataforma Fernanda Sarro <noreply@nutricionsanshine.com>',
     to: userEmail,
     subject: `Confirmación de tu orden para ${order.serviceName}`,
-    html: `<h1>¡Gracias por tu compra, ${order.userName}!</h1>
-           <p>Hemos confirmado el pago para tu servicio: ${order.serviceName}.</p>
-           <p>Pronto nos pondremos en contacto contigo con más detalles.</p>`,
+    html: `<h1>¡Gracias por tu pago, ${order.userName}!</h1>
+           <p>Hola, muchas Gracias por sumarte, feliz que comiences este recorrido. ${order.serviceName}.</p>
+           <p>Te pido por favor que me envíes un mensaje a sarrofernanda21@gmail.com.</p>
+           <p>Nombre y Apellido:</p>
+           <p>Pais:</p>
+           <p>WhatsApp: Con la característica del país correspondiente.</p>
+           <p>NY si tenes análisis Clinicos recientes ( menor a 6 meses).</p>
+           <p>Muchas Gracias Licenciada Fernanda Sarro Nutricion Depurativa y Funcional.</p>`,
   });
 
   console.log(`Confirmation email sent successfully for order ${orderId}`);
