@@ -16,7 +16,7 @@ const alegreya = Alegreya({
 });
 
 export const metadata: Metadata = {
-  title: "Plataforma de Pagos - Fernanda Sarro",
+  title: "Nutricion Sanshine",
   description: "Plataforma de pagos para los servicios de nutrición de Fernanda Sarro.",
 };
 
