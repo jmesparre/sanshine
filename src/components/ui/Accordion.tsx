@@ -53,7 +53,7 @@ const Accordion = ({ items }: AccordionProps) => {
                 className="overflow-hidden"
               >
                 <div className="p-4 pt-1 text-sm text-gray-500">
-                  <p>{String(item.content)}</p>
+                  <p className="whitespace-pre-wrap">{String(item.content)}</p>
                 </div>
               </motion.div>
             )}
