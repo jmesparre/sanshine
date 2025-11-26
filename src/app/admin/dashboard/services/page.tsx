@@ -18,6 +18,8 @@ const servicesToEdit = [
   { id: 'detox-grupal', name: 'Servicio 2' },
   { id: 'detox-individual', name: 'Servicio 3' },
   { id: 'plan-antiinflamatorio', name: 'Servicio 4' },
+  { id: 'servicio-nuevo-1', name: 'Servicio 5' },
+  { id: 'servicio-nuevo-2', name: 'Servicio 6' },
 ];
 
 const currencyOrder = ['USD', 'EUR', 'ARS', 'MXN'];
@@ -43,7 +45,7 @@ const ServicesPage = () => {
             );
             return { id: docSnap.id, ...data } as Service;
           }
-          return {
+          let defaultData: Service = {
             id: serviceInfo.id,
             isActive: true,
             order: index,
@@ -57,7 +59,47 @@ const ServicesPage = () => {
               ]
             },
             rightColumn: { image: '', text: '', accordion: [] }
-          } as Service;
+          };
+
+          if (serviceInfo.id === 'servicio-nuevo-1') {
+            defaultData = {
+              ...defaultData,
+              leftColumn: {
+                ...defaultData.leftColumn,
+                title: 'Servicio Nuevo 1',
+                prices: { USD: 100, ARS: 100000, EUR: 90, MXN: 1800 },
+                bulletPoints: [
+                  { icon: "CheckCircle", text: "Característica 1" },
+                  { icon: "CheckCircle", text: "Característica 2" }
+                ]
+              },
+              rightColumn: {
+                image: 'placeholder-producto1.jpg',
+                text: 'Descripción del servicio nuevo 1. Este es un servicio agregado recientemente.',
+                accordion: [{ title: "Detalles", content: "Más información sobre este servicio." }]
+              }
+            };
+          } else if (serviceInfo.id === 'servicio-nuevo-2') {
+            defaultData = {
+              ...defaultData,
+              leftColumn: {
+                ...defaultData.leftColumn,
+                title: 'Servicio Nuevo 2',
+                prices: { USD: 150, ARS: 150000, EUR: 140, MXN: 2700 },
+                bulletPoints: [
+                  { icon: "CheckCircle", text: "Beneficio Premium" },
+                  { icon: "CheckCircle", text: "Soporte Exclusivo" }
+                ]
+              },
+              rightColumn: {
+                image: 'placeholder-producto.jpg',
+                text: 'Descripción del servicio nuevo 2. Este es otro servicio agregado.',
+                accordion: [{ title: "Incluye", content: "Todo lo necesario para empezar." }]
+              }
+            };
+          }
+
+          return defaultData;
         })
       );
       setServices(fetchedServices);
@@ -270,7 +312,7 @@ const ServicesPage = () => {
         {activeService && (
           <TabsContent value={activeService.id}>
             <Card>
-           
+
               <CardContent className="space-y-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Columna Izquierda */}

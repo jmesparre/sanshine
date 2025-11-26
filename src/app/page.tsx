@@ -14,21 +14,21 @@ import { Testimonials } from "@/components/testimonials/Testimonials";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-          window.scrollTo({
-              top: targetElement.offsetTop,
-              behavior: "smooth",
-          });
-      }
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
-      <a href={href} onClick={handleClick} className="cursor-pointer">
-          {children}
-      </a>
+    <a href={href} onClick={handleClick} className="cursor-pointer">
+      {children}
+    </a>
   );
 };
 
@@ -41,6 +41,8 @@ export default function Home() {
     'detox-grupal': '/detox-grupal.webp',
     'detox-individual': '/detox-individual.webp',
     'plan-antiinflamatorio': '/plan-antiiflamatorio.webp',
+    'servicio-nuevo-1': '/placeholder-producto1.jpg',
+    'servicio-nuevo-2': '/placeholder-producto.jpg',
   };
 
   useEffect(() => {
@@ -116,7 +118,7 @@ export default function Home() {
           {/* Right Column */}
           <div className="relative ">
             <Image
-              src="/placeholder-fernanda.webp" 
+              src="/placeholder-fernanda.webp"
               alt="Fernanda Sarro"
               width={600}
               height={600}
@@ -135,22 +137,22 @@ export default function Home() {
           {/* Right Column */}
           <div className="md:col-span-4 w-full">
             <p className="text-lg leading-relaxed">
-             <b>¿Por qué cuidar tu intestino y microbiota intestinal?</b> 
-             <br />
+              <b>¿Por qué cuidar tu intestino y microbiota intestinal?</b>
+              <br />
               Tu digestión es mucho más que absorber nutrientes: es tu segundo cerebro, regula tus
               hormonas, tu energía, tu ánimo y tu inflamación.<br />
               Si tu intestino está inflamado, parasitado o sobrecargado, podés sentirte cansad@, con la
               mente nublada, la piel reactiva, ansiedad o dificultad para bajar de peso.
               <br />
-              <b>Sanar tu microbiota es regresar a tu eje.</b> 
+              <b>Sanar tu microbiota es regresar a tu eje.</b>
               <i> Desintoxicar tu cuerpo es hacer espacio para tu
-              bienestar. Y hacerlo con método, guía y acompañamiento… </i>lo cambia todo.
+                bienestar. Y hacerlo con método, guía y acompañamiento… </i>lo cambia todo.
             </p>
           </div>
         </section>
- 
-        
-        <hr className="pb-15 border-black mr-0 ml-4 sm:mr-4 sm:ml-4"/>
+
+
+        <hr className="pb-15 border-black mr-0 ml-4 sm:mr-4 sm:ml-4" />
 
         {/* Services Sections */}
         {loading ? (
@@ -164,45 +166,45 @@ export default function Home() {
               id={service.id}
             >
               <div className="px-4 grid md:grid-cols-2 gap-1 items-start mb-52">
-              {/* Left Column */}
-              <div className="space-y-8 md:pr-10 lg:pr-20 ">
+                {/* Left Column */}
+                <div className="space-y-8 md:pr-10 lg:pr-20 ">
                   <span className="text-[3.3rem] text-[#a8a427] font-alegreya ">
                     {`0${index + 1}`}/
                   </span>
                   <h3 className="text-[2.9rem] mb-5 leading-13 pt-1 font-semibold font-alegreya w-6/7">
                     {service.leftColumn.title}
                   </h3>
-                <div className="space-y-3.5">
-                  {service.leftColumn.bulletPoints.map((point, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <DynamicIcon name={point.icon as keyof typeof import('lucide-react')} className="h-6 w-6 text-gray-500" />
-                      <span className="italic font-light">{point.text}</span>
-                    </div>
-                  ))}
-                </div>
-                <PaymentSection service={service} />
-              </div>
-              {/* Right Column */}
-              <div className="space-y-8 pt-5">
-                <div className="relative">
-                  <Image
-                    src={serviceImages[service.id]}
-                    alt={service.leftColumn.title}
-                    width={600}
-                    height={400}
-                    className="rounded-3xl object-cover"
-                  />
-                  
-                </div>
-                <p className="text-md leading-relaxed whitespace-pre-line mb-4">{service.rightColumn.text}</p>
-                {service.rightColumn.accordion && service.rightColumn.accordion.length > 0 && (
-                  <div>
-                    <Accordion items={service.rightColumn.accordion} />
+                  <div className="space-y-3.5">
+                    {service.leftColumn.bulletPoints.map((point, idx) => (
+                      <div key={idx} className="flex items-center space-x-3">
+                        <DynamicIcon name={point.icon as keyof typeof import('lucide-react')} className="h-6 w-6 text-gray-500" />
+                        <span className="italic font-light">{point.text}</span>
+                      </div>
+                    ))}
                   </div>
-                )}
+                  <PaymentSection service={service} />
+                </div>
+                {/* Right Column */}
+                <div className="space-y-8 pt-5">
+                  <div className="relative">
+                    <Image
+                      src={serviceImages[service.id]}
+                      alt={service.leftColumn.title}
+                      width={600}
+                      height={400}
+                      className="rounded-3xl object-cover"
+                    />
+
+                  </div>
+                  <p className="text-md leading-relaxed whitespace-pre-line mb-4">{service.rightColumn.text}</p>
+                  {service.rightColumn.accordion && service.rightColumn.accordion.length > 0 && (
+                    <div>
+                      <Accordion items={service.rightColumn.accordion} />
+                    </div>
+                  )}
+                </div>
               </div>
-              </div>
-              <hr className="pb-15 border-black mr-0 ml-4 sm:mr-4 sm:ml-4"/>
+              <hr className="pb-15 border-black mr-0 ml-4 sm:mr-4 sm:ml-4" />
             </section>
           ))
         )}

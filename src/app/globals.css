@@ -72,7 +72,7 @@ body {
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input:#777;
+  --input: #777;
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -127,6 +127,7 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -150,11 +151,11 @@ body {
 
 
 tr.rdp-weekdays {
-    display: block;
+  display: block;
 }
 
 th.rdp-weekday {
-    padding-right: 17px;
+  padding-right: 17px;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -169,4 +170,13 @@ th.rdp-weekday {
   background-color: var(--accent);
   border-radius: 10px;
   border: 2px solid var(--background);
+}
+
+
+#servicio-nuevo-1 {
+  display: none;
+}
+
+#servicio-nuevo-2 {
+  display: none;
 }
