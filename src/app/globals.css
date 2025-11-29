@@ -171,12 +171,3 @@ th.rdp-weekday {
   border-radius: 10px;
   border: 2px solid var(--background);
 }
-
-
-#servicio-nuevo-1 {
-  display: none;
-}
-
-#servicio-nuevo-2 {
-  display: none;
-}

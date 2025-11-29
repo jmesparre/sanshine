@@ -74,7 +74,7 @@ const ServicesPage = () => {
                 ]
               },
               rightColumn: {
-                image: 'placeholder-producto1.jpg',
+                image: 'placeholder-producto1.png',
                 text: 'Descripción del servicio nuevo 1. Este es un servicio agregado recientemente.',
                 accordion: [{ title: "Detalles", content: "Más información sobre este servicio." }]
               }
@@ -92,7 +92,7 @@ const ServicesPage = () => {
                 ]
               },
               rightColumn: {
-                image: 'placeholder-producto.jpg',
+                image: 'placeholder-producto.png',
                 text: 'Descripción del servicio nuevo 2. Este es otro servicio agregado.',
                 accordion: [{ title: "Incluye", content: "Todo lo necesario para empezar." }]
               }

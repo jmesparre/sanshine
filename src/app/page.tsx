@@ -41,8 +41,8 @@ export default function Home() {
     'detox-grupal': '/detox-grupal.webp',
     'detox-individual': '/detox-individual.webp',
     'plan-antiinflamatorio': '/plan-antiiflamatorio.webp',
-    'servicio-nuevo-1': '/placeholder-producto1.jpg',
-    'servicio-nuevo-2': '/placeholder-producto.jpg',
+    'servicio-nuevo-1': '/placeholder-producto1.png',
+    'servicio-nuevo-2': '/placeholder-producto.png',
   };
 
   useEffect(() => {
@@ -88,11 +88,11 @@ export default function Home() {
         <section className="grid pt-5 px-4 md:grid-cols-2 gap-1 items-center mb-32">
           {/* Left Column */}
           <div>
-            <p className="text-sm sm:text-lg mb-3 mt-5 sm:mt-3 border-b-1 border-primary w-fit">Lic. Fernanda Sarro</p>
-            <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-6">
+            <p className="text-sm sm:text-md mb-3 mt-4 sm:mt-2 border-b-1 border-primary w-fit">Lic. Fernanda Sarro</p>
+            <h1 className="text-4xl leading-13 sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-4">
               Especialista en Nutrición Depurativa y Funcional
             </h1>
-            <ul className="space-y-3 text-sm italic mb-10">
+            <ul className="space-y-2 text-sm italic mb-10">
               <li>
                 <NavLink href="#taller-ig">
                   <span className="text-primary">+</span> Taller de Inteligencia Gastro Intestinal
@@ -111,6 +111,16 @@ export default function Home() {
               <li>
                 <NavLink href="#detox-individual">
                   <span className="text-primary">+</span> Detox Solar Individual
+                </NavLink>
+              </li>
+              <li>
+                <NavLink href="#servicio-nuevo-1">
+                  <span className="text-primary">+</span> Formación en Teorías para Crear Salud
+                </NavLink>
+              </li>
+              <li>
+                <NavLink href="#servicio-nuevo-2">
+                  <span className="text-primary">+</span> Salud Orgánica Limpieza Hepática Profunda
                 </NavLink>
               </li>
             </ul>

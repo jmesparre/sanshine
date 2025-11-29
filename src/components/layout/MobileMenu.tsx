@@ -44,6 +44,8 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                         <NavLink href="#plan-antiinflamatorio" number="02">Plan de Alimentación Antiinflamatorio</NavLink>
                         <NavLink href="#detox-grupal" number="03">Detox Solar Grupal</NavLink>
                         <NavLink href="#detox-individual" number="04">Detox Solar Individual</NavLink>
+                        <NavLink href="#servicio-nuevo-1" number="05">Formación en Teorías para Crear Salud</NavLink>
+                        <NavLink href="#servicio-nuevo-2" number="06">Salud Orgánica Limpieza Hepática Profunda</NavLink>
                         <div className="border-t border-black pt-4">
                             <NavLink href="#contacto" className="text-sm text-gray-600 hover:text-gray-900">
                                 Contactame
