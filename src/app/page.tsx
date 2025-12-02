@@ -41,6 +41,8 @@ export default function Home() {
     'detox-grupal': '/detox-grupal.webp',
     'detox-individual': '/detox-individual.webp',
     'plan-antiinflamatorio': '/plan-antiiflamatorio.webp',
+    'formacion-salud': '/placeholder-producto1.png',
+    'limpieza-hepatica': '/placeholder-producto.png',
     'servicio-nuevo-1': '/placeholder-producto1.png',
     'servicio-nuevo-2': '/placeholder-producto.png',
   };
@@ -114,12 +116,12 @@ export default function Home() {
                 </NavLink>
               </li>
               <li>
-                <NavLink href="#servicio-nuevo-1">
+                <NavLink href="#formacion-salud">
                   <span className="text-primary">+</span> Formación en Teorías para Crear Salud
                 </NavLink>
               </li>
               <li>
-                <NavLink href="#servicio-nuevo-2">
+                <NavLink href="#limpieza-hepatica">
                   <span className="text-primary">+</span> Salud Orgánica Limpieza Hepática Profunda
                 </NavLink>
               </li>
@@ -173,7 +175,7 @@ export default function Home() {
           services.map((service, index) => (
             <section
               key={service.id}
-              id={service.id}
+              id={service.id === 'servicio-nuevo-1' ? 'formacion-salud' : service.id === 'servicio-nuevo-2' ? 'limpieza-hepatica' : service.id}
             >
               <div className="px-4 grid md:grid-cols-2 gap-1 items-start mb-52">
                 {/* Left Column */}
