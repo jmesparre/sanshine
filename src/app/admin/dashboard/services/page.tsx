@@ -18,8 +18,8 @@ const servicesToEdit = [
   { id: 'detox-grupal', name: 'Servicio 2' },
   { id: 'detox-individual', name: 'Servicio 3' },
   { id: 'plan-antiinflamatorio', name: 'Servicio 4' },
-  { id: 'formacion-salud', name: 'Servicio 5' },
-  { id: 'limpieza-hepatica', name: 'Servicio 6' },
+  { id: 'servicio-nuevo-1', name: 'Servicio 5' },
+  { id: 'servicio-nuevo-2', name: 'Servicio 6' },
 ];
 
 const currencyOrder = ['USD', 'EUR', 'ARS', 'MXN'];
@@ -61,7 +61,7 @@ const ServicesPage = () => {
             rightColumn: { image: '', text: '', accordion: [] }
           };
 
-          if (serviceInfo.id === 'formacion-salud') {
+          if (serviceInfo.id === 'servicio-nuevo-1') {
             defaultData = {
               ...defaultData,
               leftColumn: {
@@ -79,7 +79,7 @@ const ServicesPage = () => {
                 accordion: [{ title: "Detalles", content: "Más información sobre este servicio." }]
               }
             };
-          } else if (serviceInfo.id === 'limpieza-hepatica') {
+          } else if (serviceInfo.id === 'servicio-nuevo-2') {
             defaultData = {
               ...defaultData,
               leftColumn: {
