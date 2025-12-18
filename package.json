@@ -32,7 +32,7 @@
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.525.0",
     "mercadopago": "^2.0.9",
-    "next": "15.4.8",
+    "next": "15.4.10",
     "react": "19.1.0",
     "react-day-picker": "^9.9.0",
     "react-dom": "19.1.0",
