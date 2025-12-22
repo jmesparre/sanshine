@@ -87,10 +87,9 @@ export default function Home() {
     <main className="">
       <div className="px-3 sm:px-9">
         {/* Hero Section */}
-        <section className="grid pt-5 px-4 md:grid-cols-2 gap-1 items-center mb-32">
+        <section className="grid pt-5 px-4 md:grid-cols-5 gap-1 items-center mb-32">
           {/* Left Column */}
-          <div>
-            <p className="text-sm sm:text-md mb-3 mt-4 sm:mt-2 border-b-1 border-primary w-fit">Lic. Fernanda Sarro</p>
+          <div className="md:col-span-2">
             <h1 className="text-4xl leading-13 sm:text-5xl md:text-5xl lg:text-6xl w-5/6 font-semibold font-alegreya mb-4">
               Especialista en Nutrición Depurativa y Funcional
             </h1>
@@ -128,14 +127,14 @@ export default function Home() {
             </ul>
           </div>
           {/* Right Column */}
-          <div className="relative ">
-            <Image
-              src="/placeholder-fernanda.webp"
-              alt="Fernanda Sarro"
-              width={600}
-              height={600}
-              className="rounded-3xl object-cover pt-1"
-              priority
+          <div className="relative w-full md:col-span-3 aspect-video">
+            <iframe
+              className="w-full h-full rounded-3xl object-cover"
+              src="https://www.youtube.com/embed/7b49KOv7ulU?modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
             />
           </div>
         </section>
