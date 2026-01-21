@@ -76,7 +76,7 @@ const ContactForm = () => {
               <p className="text-gray-700 mb-4 ">
                 Si tienes alguna duda, escríbeme.
               </p>
-             
+
               <div className="space-y-4 text-md pt-5">
                 <a href="https://www.instagram.com/fernanda.sarro/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors">
                   <Instagram size={24} className="text-gray-500" />
@@ -86,7 +86,7 @@ const ContactForm = () => {
                   <Mail size={24} className="text-gray-500" />
                   <span>sarrofernanda21@gmail.com</span>
                 </a>
-                <a href="https://api.whatsapp.com/send?phone=5491136857882&text=Hola%20Fer!%20%E2%9C%A8%0AMi%20nombre%20es%20%E2%80%A6%E2%80%A6%E2%80%A6%20%0AEstoy%20interesado%2Fa%20en%20%E2%80%A6%E2%80%A6%E2%80%A6..%20" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
+                <a href="https://api.whatsapp.com/send?phone=5491164421989&text=Hola%20Fer!%20%E2%9C%A8%0AMi%20nombre%20es%20%E2%80%A6%E2%80%A6%E2%80%A6%20%0AEstoy%20interesado%2Fa%20en%20%E2%80%A6%E2%80%A6%E2%80%A6..%20" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-700 hover:text-gray-900 transition-colors">
                   <MessageCircle size={24} className="text-gray-500" />
                   <span>WhatsApp</span>
                 </a>
@@ -95,7 +95,7 @@ const ContactForm = () => {
           </div>
           <div className="md:w-1/2 w-full ">
             <Card className=" border-1  border-black mt-34 rounded-2xl shadow-none p-4">
-           
+
               <CardContent>
                 {isSubmitted ? (
                   <div className="text-center py-12">
